@@ -66,7 +66,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     $thongbao = "Tài khoản không tồn tại, vui lòng kiểm tra lại hoặc đăng ký";
                 }
             }
-            include "taikhoan/dangky.php";
+            include "taikhoan/dangnhap.php";
             break;
 
             

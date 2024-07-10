@@ -1,7 +1,7 @@
 <div class="header_container">
         <div class="header_menu1">
             <ul>
-                <li><a href=""><h4>Trang Chủ</h4></a></li>
+                <li><a href="index.php?act=view/home"><h4>Trang Chủ</h4></a></li>
                 <li><a href=""><h4>Giới Thiệu</h4></a></li>
                 <li><a href=""><h4>Chi Nhánh</h4></a>
                 </li>

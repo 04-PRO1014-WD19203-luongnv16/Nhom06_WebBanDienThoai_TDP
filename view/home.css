@@ -690,3 +690,43 @@ body {
 .dangki_anh:hover{
   transform: scale(1.1);
 }
+/*login*/
+
+/* 
+  .dangnhap_container {
+    width: 50%; 
+    
+  } */
+
+.login {
+  width: 30%; 
+  padding: 20px;
+  margin-left: 450px;
+}
+
+.formdangnhap input[type="text"],
+.formdangnhap input[type="password"] {
+  width: 80%; 
+  max-width: 300px; 
+  border: 1px #ccc solid;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: 500px;
+}
+
+.formdangnhap input[type="submit"] {
+  width: 80%; 
+  max-width: 300px; 
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px #ccc solid;
+  margin-top: 10px;
+ margin-left: 500px;
+}
+.ten {
+  margin-left: 500px;
+}
+.mk {
+  margin-left: 500px;
+}
