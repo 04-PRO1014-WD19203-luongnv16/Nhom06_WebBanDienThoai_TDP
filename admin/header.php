@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href=" /css/style.css " />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -93,7 +93,6 @@
                         <div class="menu-title">Giỏ hàng</div>
                       </a>
                     </li>
-<<<<<<< HEAD
                     <li>
                       <a href="" class="has-arrow">
                         <div class="child-icon">
@@ -102,8 +101,6 @@
                         <div class="menu-title">danh sách đơn hàng</div>
                       </a>
                     </li>
-=======
->>>>>>> e7787e5193575e247df227844cb56c2dbf844c06
                     <li class="menu-label">PAGES</li>
                     <li>
                       <a href="#" class="has-arrow">
