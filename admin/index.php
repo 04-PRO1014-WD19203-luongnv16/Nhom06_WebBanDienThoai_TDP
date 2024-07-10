@@ -1,5 +1,6 @@
 <?php
-include "../model/pdo.php";
+include "../model/pdo.pdhp";
+include "../model/danhmuc.php";
 
 //controler
 
@@ -16,20 +17,41 @@ if(isset($_GET['act'])){
         
             include "danhmuc/add.php";
             break;
-        case '':
+        case 'listdm':
+            $listdanhmuc=loadall_danhmuc();
+            include "danhmuc/list_danhmuc.php";
+            break;
                
-        case '':
-            
-            break;
-        case '':
-            
-            
-            include "danhmuc/update.php";
-            break;
-        case '':
-           
-            break;
+        case 'xoadm':
+            if(isset($_GET['id'])&&($_GET['id']>0)){
+                delete_danhmuc($_GET['id']);
+                echo "<script>";
+                echo "alert('bạn có muỗn xóa không')";
+                echo "</script>";
 
+            }
+            $listdanhmuc=loadall_danhmuc();
+            include "danhmuc/list.php";
+            break;
+            
+        case 'suadm':
+            if(isset($_GET['id'])&&($_GET['id']>0)){
+                $dm=loadone_danhmuc($_GET['id']);
+            }
+            
+            include "danhmuc/update_danhmuc.php";
+            break;
+        case 'updatedm':
+            if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                $tenloai=$_POST['tenloai'];
+                $id=$_POST['id'];
+                update_danhmuc($id,$tenloai);
+                $thongbao="Cập nhật thành công";
+            }
+            $listdanhmuc=loadall_danhmuc();
+            include "danhmuc/list.php";
+            break;
+            
             /*controller sản phẩm */
 
             case '':
