@@ -1,5 +1,7 @@
 <div class="row">
-    <div class="row frmtitle"> <h1>Danh sách loại hàng hóa </h1></div>
+    <div class="row frmtitle">
+        <h1>Danh sách loại hàng hóa </h1>
+    </div>
     <div class="row frmcontent">
 
         <div class="row mb10 frmdsloai">
