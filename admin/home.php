@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href=" /css/style.css " />
+    <link rel="stylesheet" href="/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <title>Admin </title>
+    <title>Admin - The Brew House</title>
   </head>
   <body>
     <!-- Start Header -->
@@ -61,7 +61,7 @@
                   <!-- Start navigation -->
                   <ul class="metismenu">
                     <li>
-                      <a href="index.php" class="has-arrow">
+                      <a href="index.html" class="has-arrow">
                         <div class="parent-icon">
                           <i class="bi bi-house"></i>
                         </div>
@@ -70,7 +70,7 @@
                     </li>
                     <li class="menu-label">Quản lý</li>
                     <li>
-                      <a href="index.php?actadddm" class="has-arrow">
+                      <a href="#" class="has-arrow">
                         <div class="child-icon">
                           <i class="bi bi-caret-right"></i>
                         </div>
@@ -78,7 +78,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="index.php?actaddsp" class="has-arrow">
+                      <a href="sanpham.html" class="has-arrow">
                         <div class="child-icon">
                           <i class="bi bi-caret-right"></i>
                         </div>
@@ -94,7 +94,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="" class="has-arrow">
+                      <a href="sanpham.html" class="has-arrow">
                         <div class="child-icon">
                           <i class="bi bi-caret-right"></i>
                         </div>
@@ -115,7 +115,7 @@
                         <div class="child-icon">
                           <i class="bi bi-caret-right"></i>
                         </div>
-                        <div class="menu-title">bình luận </div>
+                        <div class="menu-title">binh luận </div>
                       </a>
                     </li>
                     <li>

@@ -1,7 +1,12 @@
 <?php
-include "../model/pdo.pdhp";
+include "./component/header.php";
+include "./component/siderbar.php";
+include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
+include "header.php";
+
+
 
 //controler
 
