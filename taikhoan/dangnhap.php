@@ -21,16 +21,14 @@
 
 <br>
 <br>
+
 <div class="row">
             <div class="boxtitle">Tài Khoản</div>
-            <div class="boxcontent formtaikhoan">
+            <div class="boxcontent formdangnhap">
                 <?php
                 if (isset($_SESSION['user'])) {
                     extract($_SESSION['user']);
                     ?>
-                    <div class="row">
-                        Xin chào <?=$user?>
-                    </div>
                     <div class="row">
                     <li>
                             <a href="index.php?act=quenmk">Quên mật khẩu</a>
@@ -50,13 +48,13 @@
                     <?php
                 } else {
                     ?>
-                    <form action="index.php?act=dangnhap" method="post">
+                    <form action="index.php?act=dangnhap" method="post" class = "dangnhap">
                         <div class="row">
-                            Tên Đăng Nhập<Br>
+                            <label for="username" class = "ten">Tên Đăng Nhập</label><Br>
                             <input type="text" id="username" name="username"><Br>
                         </div>
                         <div class="row">
-                            Mật Khẩu<Br>
+                            <label for="password" class ="mk">Mật Khẩu</label><Br>
                             <input type="password" id="password" name="password">
                         </div>
                         <div class="row">

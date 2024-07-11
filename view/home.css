@@ -692,12 +692,21 @@ body {
 }
 /*login*/
 
-/* 
-  .dangnhap_container {
-    width: 50%; 
-    
-  } */
 
+.formdangnhap input[type="text"],
+.formdangnhap input[type="password"] {
+  margin-bottom: 8px; 
+  padding: 8px; 
+}
+
+.formdangnhap input[type="text"],
+.formdangnhap input[type="password"] {
+  width: 80%; 
+  max-width: 400px; 
+  border: 1px #ccc solid;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 .login {
   width: 30%; 
   padding: 20px;
@@ -711,7 +720,6 @@ body {
   border: 1px #ccc solid;
   padding: 5px 10px;
   border-radius: 5px;
-  margin-left: 500px;
 }
 
 .formdangnhap input[type="submit"] {
@@ -722,11 +730,9 @@ body {
   padding: 10px;
   border: 1px #ccc solid;
   margin-top: 10px;
- margin-left: 500px;
 }
-.ten {
-  margin-left: 500px;
-}
-.mk {
+
+
+.dangnhap {
   margin-left: 500px;
 }
