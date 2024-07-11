@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    width: 90%;
+    margin: 0 auto; /* Canh giữa nội dung theo chiều ngang */
+}
+
+.box_container {
+    width: 100%;
+}
+
+.header_container {
+    display: flex;
+    justify-content: space-between; /* Phân bố các phần tử theo chiều ngang */
+    align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+    padding: 10px 0; /* Thêm khoảng cách đệm phía trên và dưới header */
+}
+
+.logo_header {
+    width: 200px;
+    height: 100px;
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động */
+}
+
+.logo_header:hover {
+    transform: scale(1.5); /* Phóng to 150% khi di chuột vào */
+}
+
+.header_menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.header_menu ul li {
+    margin-right: 20px;
+}
+
+.header_menu ul li a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s;
+}
+
+.header_menu ul li a:hover {
+    color:burlywood;
+}
+
+.main_danhmuc_slideshow_taikhoan {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.main_danhmuc,
+.main_slideshow,
+.main_taikhoan {
+    width: 20%; /* Độ rộng mặc định cho mỗi box */
+}
+
+.boxtitle {
+    color: #333;
+    padding: 10px;
+    background-color: #eee;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px #ccc solid;
+    width: 100%; /* Đặt chiều rộng cho boxtitle */
+    text-align: center; /* Căn giữa tiêu đề trong boxtitle */
+}
+
+.boxcontent {
+    border-left: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-height: 200px;
+    padding: 20px;
+    width: 100%; /* Đặt chiều rộng cho boxcontent */
+}
+
+
+.boxcontent form {
+    margin-top: 10px; 
+}
+
+.boxcontent form input[type="text"],
+.boxcontent form input[type="password"],
+.boxcontent form input[type="checkbox"],
+.boxcontent form input[type="submit"] {
+    margin-bottom: 10px; /* Khoảng cách dưới của mỗi input */
+}
+
+.formtaikhoan input[type="text"],
+.formtaikhoan input[type="password"] {
+  width: 100%;
+  border: 1px #ccc solid;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.formtaikhoan input[type="submit"] {
+  background-color:white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px #ccc solid;
+}
+
+.formtaikhoan input[type="submit"]:hover{
+    background-color: #ccc;
+}
+
+.formtaikhoan li a {
+  color: teal;
+  text-decoration: none;
+}
+
+.formtaikhoan li a:hover {
+  color: rgb(236, 227, 227);
+  text-decoration: underline;
+}
+
+.menudoc ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+  }
+  
+  .menudoc ul li {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px #ccc solid;
+  }
+  
+  .menudoc ul li a {
+    color: #666;
+    text-decoration: none;
+  }
+  
+  .menudoc ul li:hover {
+    background-color: #ccc;
+  }
+/* Sản phẩm yêu thích */
+  .like {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.mb10 {
+    width: 25%; /* Sử dụng 25% width để mỗi hàng chứa 4 sản phẩm */
+    margin-bottom: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.top img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Sản phẩm nổi bật */
+.noibat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.noibat img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.anh_gioithieu {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 20px;
+    transition: transform 0.3s ease; /* Thêm hiệu ứng transform */
+}
+
+.anh_gioithieu:hover {
+    transform: scale(0.9); /* Thu nhỏ ảnh khi di chuột vào */
+}
+
+.hehe{
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+/* slide show */
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 710px;
+  position: relative;
+  margin: auto;
+  margin-left: -220px;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* End slide show */
