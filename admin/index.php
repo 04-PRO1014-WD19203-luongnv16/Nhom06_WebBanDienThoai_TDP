@@ -1,5 +1,6 @@
 <?php
 include "./component/header.php";
+include "./component/home.php";
 include "./component/siderbar.php";
 include "../model/pdo.php";
 include "../model/danhmuc.php";
