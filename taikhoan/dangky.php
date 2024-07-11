@@ -1,74 +1,59 @@
-<div class="header_container">
-        <div class="header_menu1">
-            <ul>
-                <li><a href="index.php?act=view/home"><h4>Trang Chủ</h4></a></li>
-                <li><a href=""><h4>Giới Thiệu</h4></a></li>
-                <li><a href=""><h4>Chi Nhánh</h4></a>
-                </li>
-            </ul>
+<?php
+if (isset($_POST['dangky'])) {
+    if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['tel'])) {
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $tel = $_POST['tel'];
+
+        if (empty($username) || empty($password) || empty($email) || empty($tel)) {
+            $thongbao = "Vui lòng điền đầy đủ thông tin";
+        } else if (strlen($password) < 8) {
+            $thongbao = "Mật khẩu phải ít nhất 8 ký tự";
+        } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $thongbao = "Email không hợp lệ";
+        } else {
+            // Assuming insert_taikhoan() function performs the database insertion
+            insert_taikhoan($username, $password, $email, $tel);
+            $thongbao = "Đăng ký thành công!";
+        }
+    } else {
+        $thongbao = "Vui lòng điền đầy đủ thông tin đăng ký";
+    }
+}
+?>
+
+<div class="auth-wrapper">
+    <div class="auth-container">
+        <div class="auth-action-left">
+            <div class="auth-form-outer">
+                <h2 class="auth-form-title">Đăng Ký Tài Khoản</h2>
+                <form class="login-form" onsubmit="return validateForm()" action="index.php?act=dangky" method="post">
+                    <input type="text" class="auth-form-input" placeholder="Tên Tài Khoản" name="username">
+                    <input type="password" class="auth-form-input" placeholder="Mật Khẩu" name="password">
+                    <div class="input-icon">
+                        <input type="email" class="auth-form-input" placeholder="Email" name="email">
+                    </div>
+                    <input type="tel" class="auth-form-input" placeholder="Số Điện Thoại" name="tel" id="tel">
+                    
+                    <div class="footer-action">
+                        <input type="submit" value="Đăng Ký" class="auth-submit" name="dangky">
+                        <a href="index.php?act=dangnhap" class="auth-btn-direct">Đăng Nhập</a>
+                    </div>
+                </form>
+                <?php
+                if (isset($thongbao) && !empty($thongbao)) {
+                    echo "<span>" . $thongbao . "</span>";
+                }
+                ?>
+            </div>
         </div>
-        <div class="header_logo">
-            <a href="#"><img class="logo_header" src="img/logo slider.png"></a>
-        </div>
-        <div class="header_menu2">
-            <ul>
-                <li><a href=""><h4>Liên Hệ</h4></a></li>
-                <li><a href=""><h4>Tuyển Dụng</h4></a></li>
-                <li><a href="index.php?act=dangnhap"><h4>Đăng Nhập</h4></a></li>
-            </ul>
+        <div class="auth-action-right">
+            <div class="auth-image">
+                <img src="taikhoan/assets/vector.jpg" alt="login">
+            </div>
         </div>
     </div>
-
-<br>
-
-
-<div class="boxtitle">ĐĂNG KÍ TÀI KHOẢN</div>
-<div class="dangki_container">
-   
-         <div class=" row boxcontent1 formtaikhoan">
-         <form onsubmit="return validateForm()" action="index.php?act=dangky" method="post" class="dangky">
-
-        <div class="row ">
-           Email <br>
-        <input type="text" name="" require>
-        </div>
-
-        <div class="row ">
-            Tên đăng nhập <br>
-        <input type="text" name="username">
-        </div>
-
-        <div class="row ">
-            Mật khẩu <br>
-        <input type="password" name="password">
-        </div>
-
-        <div class="row ">
-            Địa chỉ <br>
-        <input type="text" name="">
-        </div>  
-    
-        <div class="row">
-            Số điện thoại <br>
-        <input type="text" name="">
-        </div> 
-
-        <input type="submit" value="Đăng kí" >
-        
-     
-    </form>
-         </div>
-         
-      <div class="anh_dangki">
-        <img class="dangki_anh" src="img/dangki.webp" alt="">
-      </div>
-     
-        </div>
 </div>
-<footer>
-    <div class="footer_thongtin">
-        <img class="hehe" src="img/ftthongtin.png" alt="">
-    </div>
-</footer>
-</body>
-</html>
+
+<script src="taikhoan/js/common.js"></script>
