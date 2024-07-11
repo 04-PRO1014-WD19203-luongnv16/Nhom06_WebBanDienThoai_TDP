@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include "model/pdo.php";
 include "model/danhmuc.php";
 include "model/sanpham.php";
@@ -42,32 +43,47 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             include "view/home.php";
             break;
 
-        case 'dangky':
-            if (isset($_POST['dangky']) && ($_POST['dangky'])) {
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-                $email = $_POST['email'];
-                insert_taikhoan($username, $password, $email);
-                $thongbao = "Đăng ký thành công";
-            }
-            include "taikhoan/dangky.php";
-            break;
-
-        case 'dangnhap':
-            if (isset($_POST['dangnhap']) && $_POST['dangnhap']) {
-                $user = $_POST['username'];
-                $pass = $_POST['password'];
-                $checkuser = checkuser($user, $pass);
-                if (is_array($checkuser)) {
-                    $_SESSION['user'] = $checkuser;
-                    header('Location: index.php');
-                    exit();
-                } else {
-                    $thongbao = "Tài khoản không tồn tại, vui lòng kiểm tra lại hoặc đăng ký";
+            case 'dangky':
+                if (isset($_POST['dangky'])) {
+                    $username = isset($_POST['username']) ? $_POST['username'] : '';
+                    $password = isset($_POST['password']) ? $_POST['password'] : '';
+                    $email = isset($_POST['email']) ? $_POST['email'] : '';
+                    $tel = isset($_POST['tel']) ? $_POST['tel'] : '';
+            
+                    if (empty($username) || empty($password) || empty($email) || empty($tel)) {
+                        $thongbao = "Vui lòng điền đầy đủ thông tin";
+                    } elseif (strlen($password) < 8) {
+                        $thongbao = "Mật khẩu phải ít nhất 8 ký tự";
+                    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $thongbao = "Email không hợp lệ";
+                    } else {
+                        $thongbao = "Đăng ký thành công";
+                    }
                 }
-            }
-            include "taikhoan/dangnhap.php";
-            break;
+                include "taikhoan/dangky.php";
+                break;
+            
+
+            case 'dangnhap':
+                if (isset($_POST['dangnhap']) && $_POST['dangnhap']) {
+                    if (isset($_POST['username']) && isset($_POST['password'])) {
+                        $username = $_POST['username'];
+                        $password = $_POST['password'];
+                        $checkuser = checkuser($username, $password); 
+                        if (is_array($checkuser)) {
+                            $_SESSION['user'] = $checkuser;
+                            header('Location: index.php');
+                            exit();
+                        } else {
+                            $thongbao = "Tài khoản không tồn tại, vui lòng kiểm tra lại hoặc đăng ký";
+                        }
+                    } else {
+                        $thongbao = "Vui lòng điền đầy đủ thông tin đăng nhập";
+                    }
+                }
+                include "taikhoan/dangnhap.php";
+                break;
+            
 
             
         case 'thoat':
