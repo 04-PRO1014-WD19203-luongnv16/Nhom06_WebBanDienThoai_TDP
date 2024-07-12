@@ -18,7 +18,6 @@
                     $onesp = loadone_sanpham($id);
                     if ($onesp) {
                         $iddm = $onesp['iddm'];
-                        $spkhac = load_sanpham_cungloai($id, $iddm);
                         include "trangsp/spct.php";
                     } 
                 }

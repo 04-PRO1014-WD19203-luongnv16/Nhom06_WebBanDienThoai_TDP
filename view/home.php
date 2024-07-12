@@ -53,7 +53,7 @@
                 <h3>Xiaomi</h3>
             </div>
             <div class="col-md-6 see-all-margin">
-                <h5>See All</h5>
+                <a href="index.php?act=sanpham"><h5>Xem tất cả</h5></a>
             </div>
         </div>
 
