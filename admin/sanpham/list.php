@@ -21,12 +21,10 @@
           <div class="col-auto">
             <select name="" id="">
               <option value="0" selected>Tất cả</option>
-              <option value="1">Cà Phê</option>
-              <option value="2">Trà Sữa</option>
-              <option value="3">Đá Xay</option>
-              <option value="4">Nước Ép</option>
-              <option value="5">Nước Ngọt</option>
-              <option value="6">Bánh Ngọt</option>
+              <option value="1">iphone</option>
+              <option value="2">Sam Sung</option>
+              <option value="3">huawei</option>
+              <option value="4">xiaomi</option>
             </select>
           </div>
           <div class="col-auto">
@@ -50,7 +48,7 @@
                     <tr>
                       <th></th>
                       <th>Tên sản phẩm</th>
-                      <th>Giá nhập</th>
+                      <th>Giá </th>
                       <th>Giá sale</th>
                       <th>Giá niêm yết</th>
                       <th>Tồn kho</th>
@@ -70,7 +68,7 @@
                       }
                       echo '
                         <tr>
-                      <td>
+                   bv      <td>
                         <input type="checkbox" class="form-check-input" />
                       </td>
                       <td>
