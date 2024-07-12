@@ -13,7 +13,7 @@
                   <!-- Start navigation -->
                   <ul class="metismenu">
                     <li>
-                      <a href="index.php" class="has-arrow">
+                      <a href="index.php?act" class="has-arrow">
                         <div class="parent-icon">
                           <i class="bi bi-speedometer"></i>
                         </div>
