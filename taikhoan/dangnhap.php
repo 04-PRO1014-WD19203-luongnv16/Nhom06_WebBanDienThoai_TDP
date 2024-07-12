@@ -10,6 +10,7 @@ if (isset($_SESSION['user']))
                     <h2 class="auth-form-title">Đăng Nhập</h2>
                     <div class="auth-external-container">
                         <div class="auth-external-list">
+                            <span>chưa có tài khoản? bấm vào đăng ký</span>
                         </div>
                     </div>
                     <div class="login-form">
