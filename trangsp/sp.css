@@ -1,0 +1,247 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+
+header h2 {
+    margin: 0;
+    color: #110e0a;
+    
+}
+
+header input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+aside {
+    width: 25%;
+    box-sizing: border-box;
+    color: black;
+}
+
+.breadcrumbs {
+    display: flex; 
+    align-items: center; 
+}
+
+.breadcrumbs a {
+    text-decoration: none; 
+    margin-right: 5px; 
+}
+
+.breadcrumbs h6 {
+    margin: 0; 
+}
+
+aside h2 {
+    color: #f39c12;
+}
+
+.filter-category, .filter-ratings, .filter-sort {
+    margin-top: 20px;
+}
+
+main {
+    box-sizing: border-box;
+    padding-right: 100px;
+    padding-top: 50px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-item {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    width: 30%;
+}
+
+.product-item img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.product-item h3 {
+    margin: 10px 0 5px;
+}
+
+.product-item p {
+    margin: 5px 0;
+}
+
+.product-item button {
+    padding: 10px 20px;
+    background-color: #8e44ad;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-item button:hover {
+    background-color: #732d91;
+}
+
+.product-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    display: inline-block;
+    margin-right: 5px;
+}
+/*chitiet*/
+.product-detail1 {
+    display: flex;
+    align-items: flex-start; 
+    margin-top: 20px; 
+}
+
+
+.product-detail1 span {
+      color: black;
+      font-size: 25px;
+      display: flex;
+      font-weight: bold;
+}
+.product-detail1 .spct {
+    margin-right: 20px; 
+}
+.spct img {
+    width: 100%;
+}
+.product-detail1 img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+.product-detail1 .product-info {
+    flex-grow: 1; 
+}
+
+.product-detail1 .product-info span {
+    display: block; 
+    margin-bottom: 10px; 
+}
+
+.product-detail1 .product-info span:first-child {
+    font-weight: bold; 
+}
+/*danhgia*/
+
+div.stars {
+    width: 270px;
+    display: inline-block;
+}
+
+input.star { 
+    display: none; 
+}
+
+label.star {
+    float: right;
+    font-size: 15px;
+    color: #444;
+    transition: all .2s;
+}
+
+input.star:checked ~ label.star:before {
+    content: '\f005';
+    color: #FD4;
+    transition: all .25s;
+}
+
+input.star-5:checked ~ label.star:before {
+    color: #FE7;
+    text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.star:before { 
+    color: #F62; 
+}
+
+label.star:hover { 
+    transform: rotate(-15deg) scale(1.3); 
+}
+
+label.star:before {
+    content: '\f006';
+    font-family: FontAwesome;
+}
+/***/
+.dangky {
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.dangky span{
+    font-size: 15px;
+    color: #676363;
+}
+.dangky h6 {
+    font-weight: bold;
+    font-size: 24px!important;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.dangky input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.dangky input[type="button"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: red;
+    color: #fff;
+
+
+}
+
+.dangky input[type="text"]:focus {
+    outline: none;
+    border-color: dodgerblue;
+}
+
+.mua {
+    width: 100%;
+    color: #fff;
+    border-radius: 5px;
+    background-color: red;
+    height: 50px;
+    border: none;
+}
+.boxphai {
+    float: right;
+    width: 65%;
+}
+.boxtrai {
+    float: left;
+    width: 100%;
+}
