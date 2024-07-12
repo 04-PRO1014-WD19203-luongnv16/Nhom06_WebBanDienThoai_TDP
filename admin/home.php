@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -61,7 +61,7 @@
                   <!-- Start navigation -->
                   <ul class="metismenu">
                     <li>
-                      <a href="index.html" class="has-arrow">
+                      <a href="index.php?act" class="has-arrow">
                         <div class="parent-icon">
                           <i class="bi bi-house"></i>
                         </div>
