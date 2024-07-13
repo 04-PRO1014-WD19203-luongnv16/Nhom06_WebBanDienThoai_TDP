@@ -1,6 +1,6 @@
    <!-- Start footer -->
    <footer class="page-footer">
-      <p class="mb-0">Copyright © 2024. The Brew House.</p>
+      <p class="mb-0">Nhóm 6 TDP.</p>
     </footer>
     <!-- End footer -->
   </body>

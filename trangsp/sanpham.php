@@ -10,29 +10,26 @@
 <body>
     <div class="container">
         <header>
-  
           </header>
-          
         <aside>
             <div class="boxtrai">
             <div class="filters">
             <div class="breadcrumbs">
         <a href="index.php?act=view/home"><h6>Trang Chủ /</h6></a>
         <a  href="index.php?act=sanpham">Điện Thoại / </a>
-
-    </div>
-                
-                <div class="filter-category">
-                    <h3>Danh Mục</h3>
-                    <label><input type="checkbox"> Samsung</label><br>
-                    <label><input type="checkbox"> Iphone</label><br>
-                    <label><input type="checkbox"> Oneplus</label><br>
-                </div>
-                <div class="filter-ratings">
-                    <h3>Đánh giá</h3>
-                    <label><input type="radio" name="rating"> 4 sao</label><Br>
-                    <label><input type="radio" name="rating"> 3 sao</label><Br>
-                </div>
+    </div>  
+    <div class="filter-category">
+    <h3>Danh Mục</h3>
+    <?php foreach ($listdm as $dm) {
+        extract($dm);
+        $linkdm = "index.php?act=dmsp&iddm=" .$id;
+        echo '
+        <label><input type = "checkbox"><a href="'.$linkdm.'">'.$name.'</a></input></label><br>
+        
+        ';
+    }
+    ?>
+             </div>
                 <div class="filter-sort">
                     <h3>Tìm kiếm theo:</h3>
                     <label><input type="radio" name="sort"> Giá thấp nhất</label><br>

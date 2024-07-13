@@ -46,8 +46,8 @@
                 <table class="table">
                   <thead class="table-light">
                     <tr>
-                      <th></th>
                       <th>Tên sản phẩm</th>
+                      <th>Ảnh</th>
                       <th>Giá </th>
                       <th>Giá sale</th>
                       <th>Giá niêm yết</th>
@@ -56,32 +56,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($listsanpham as $sp){
-                      extract($sp);
-                      $suasp="index.php?act=suasp&id=".$id;
-                      $xoasp="index.php?act=xoasp&id=".$id;
-                      $hinhpath= ".././upload/".$img;
-                      if(is_file($hinhpath)){
-                        $img="<img src='".$hinhpath."'height='100' width='100'>";
-                      }else{
-                        $img="no photo";
-                      }
+                      <?php foreach($listsanpham as $sp){
+                        extract($sp);
+                        $suasp="index.php?act=suasp&id=".$id;
+                        $xoasp="index.php?act=xoasp&id=".$id;
+
                       echo '
-                        <tr>
-                   bv      <td>
-                        <input type="checkbox" class="form-check-input" />
-                      </td>
-                      <td>
-                        <div class="product">
-                          <div class="product-box">
-                            '.$img.'
-                          </div>
-                          <div class="product-info">
-                            <a href="#" class="product-title"
-                              >'.$name.'</a>
-                          </div>
-                        </div>
-                      </td>
+                     <td> '.$name.'</td>              
+                    <td><img src="../view/images/'.$img.'" style="width:200px;height:auto;"></td>
                       <td>'.$import_price.'<u>đ</u></td>
                       <td>'.$sale_price.'<u>đ</u></td>
                       <td>'.$listed_price.'<u>đ</u></td>
