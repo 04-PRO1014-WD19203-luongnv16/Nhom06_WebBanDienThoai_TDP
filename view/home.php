@@ -63,9 +63,9 @@
                     <img src="view/images/laptop/product-1.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Asus VivaBook</h5>
-                        <p class="card-text">Choose the top brands Laptop with latest version, new model, attractive
-                            design, various options, battery durability and 2 years service warantee.</p>
-                        <h6>$999</h6>
+                        <p class="card-text">Lựa chọn những thương hiệu Laptop hàng đầu với phiên bản mới nhất, mẫu mã mới, hấp dẫn
+                        thiết kế, nhiều lựa chọn, độ bền của pin và bảo hành dịch vụ 2 năm.</p>
+                        <h6>9.990.000₫</h6>
                         <button class="button-color">Mua Ngay →</button>
                     </div>
                 </div>
@@ -73,10 +73,10 @@
                     <img src="view/images/laptop/product-2.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Toshiba Razer</h5>
-                        <p class="card-text">Choose the top brands Laptop with latest version, new model, attractive
-                            design, various options, battery durability and 2 years service warantee.</p>
+                        <p class="card-text">Lựa chọn những thương hiệu Laptop hàng đầu với phiên bản mới nhất, mẫu mã mới, hấp dẫn
+                        thiết kế, nhiều lựa chọn, độ bền của pin và bảo hành dịch vụ 2 năm.</p>
 
-                        <h6>$999</h6>
+                        <h6>9.990.000₫</h6>
                         <button class="button-color">Mua Ngay →</button>
                     </div>
                 </div>
@@ -84,10 +84,10 @@
                     <img src="view/images/laptop/product-3.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Xiaomi Mi Notebook Pro</h5>
-                        <p class="card-text">Choose the top brands Laptop with latest version, new model, attractive
-                            design, various options, battery durability and 2 years service warantee.</p>
+                        <p class="card-text">Lựa chọn những thương hiệu Laptop hàng đầu với phiên bản mới nhất, mẫu mã mới, hấp dẫn
+                        thiết kế, nhiều lựa chọn, độ bền của pin và bảo hành dịch vụ 2 năm.</p>
 
-                        <h6>$999</h6>
+                        <h6>9.990.000₫</h6>
                         <button class="button-color">Mua Ngay →</button>
                     </div>
                 </div>
