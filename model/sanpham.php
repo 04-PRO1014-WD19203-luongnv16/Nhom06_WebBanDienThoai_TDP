@@ -3,11 +3,16 @@ function insert_sanpham($name,$mota,$img,$import_price,$sale_price,$listed_price
   $sql = "INSERT INTO sanpham(name,mota,img,import_price,sale_price,listed_price,stock,iddm) values('$name','$mota','$img','$import_price','$sale_price','$listed_price',$stock,'$iddm')";
   pdo_execute($sql);
 }
-  function loadAll_sanpham(){
-    $sql = "SELECT sanpham.*, danhmuc.name FROM sanpham inner join danhmuc on sanpham.iddm = danhmuc.id order by sanpham.id desc";
-    $listsanpham=pdo_query($sql);
-    return $listsanpham;
+function loadAll_sanpham($iddm = 0){
+  if ($iddm > 0) {
+      $sql = "SELECT * FROM sanpham WHERE iddm = $iddm";
+  } else {
+      $sql = "SELECT * FROM sanpham";
   }
+  $listsanpham = pdo_query($sql);
+  return $listsanpham;
+}
+
   function delete_sanpham($id){
     $sql = "DELETE FROM sanpham WHERE id=".$id;
     pdo_execute($sql);
@@ -17,6 +22,7 @@ function insert_sanpham($name,$mota,$img,$import_price,$sale_price,$listed_price
     $sp = pdo_query_one($sql);
     return $sp;
   }
+  
   function update_sanpham($id,$name,$mota,$img,$import_price,$sale_price,$listed_price,$stock,$iddm){
     if($img!=""){
       $sql = "UPDATE sanpham SET name='$name',mota='$mota',img='$img',import_price='$import_price',sale_price='$sale_price',listed_price='$listed_price',stock='$stock',iddm='$iddm' WHERE id=".$id;

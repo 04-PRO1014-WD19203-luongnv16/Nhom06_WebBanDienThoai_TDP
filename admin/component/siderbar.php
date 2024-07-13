@@ -10,7 +10,6 @@
                   </div>
                 </div>
                 <div class="sidebar-nav">
-                  <!-- Start navigation -->
                   <ul class="metismenu">
                     <li>
                       <a href="index.php?act" class="has-arrow">
@@ -22,7 +21,7 @@
                     </li>
                     <li class="menu-label">Quản lý</li>
                     <li>
-                      <a href="#" class="has-arrow">
+                      <a href="index.php?act" class="has-arrow">
                         <div class="child-icon">
                           <i class="bi bi-people"></i>
                         </div>
@@ -55,7 +54,7 @@
                     </li>
                     <li class="menu-label">PAGES</li>
                     <li>
-                      <a href="#" class="has-arrow">
+                      <a href="index.php?act" class="has-arrow">
                         <div class="child-icon">
                           <i class="bi bi-telephone"></i>
                         </div>
@@ -63,7 +62,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="has-arrow">
+                      <a href="" class="has-arrow">
                         <div class="child-icon">
                           <i class="bi bi-gear"></i>
                         </div>
@@ -71,7 +70,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="has-arrow">
+                      <a href="index.php?act=thoat" class="has-arrow">
                         <div class="child-icon">
                           <i class="bi bi-box-arrow-right"></i>
                         </div>
@@ -79,7 +78,6 @@
                       </a>
                     </li>
                   </ul>
-                  <!-- End navigation -->
                 </div>
               </div>
             </div>
