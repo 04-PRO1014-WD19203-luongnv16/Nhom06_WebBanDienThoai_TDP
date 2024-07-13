@@ -13,7 +13,6 @@ if (isset($_POST['dangky'])) {
         } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $thongbao = "Email không hợp lệ";
         } else {
-            // Assuming insert_taikhoan() function performs the database insertion
             insert_taikhoan($username, $password, $email, $tel);
             $thongbao = "Đăng ký thành công!";
         }
