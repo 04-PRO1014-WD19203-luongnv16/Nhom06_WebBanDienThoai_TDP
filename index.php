@@ -140,29 +140,27 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         break;
 
         case 'bill':
-            if (isset($_SESSION['user'])) {
+            if (isset($_POST['xacnhan']) && $_POST['xacnhan']) {
                 $iduser = $_SESSION['user']['id'];
                 $hoten = $_POST['hoten'];
                 $diachi = $_POST['diachi'];
                 $sdt = $_POST['sdt'];
                 $email = $_POST['email'];
-                $iduser = $_SESSION['user']['id'];
-                $ngaydathang = date('Y-m-d'); 
-                $pttt = $_POST['pttt']; 
-                $total = load_cart_total($iduser); 
-                insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydanghang, $total);
+                $ngaydathang = date('Y-m-d');
+                $pttt = $_POST['pttt'];
+                $total = load_cart_total($iduser);
+                
+                insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total);
+                
                 header('Location: index.php?act=billconfirm');
-
+                exit();
             }
             include "trangsp/bill.php";
             break;
         
         
-
-            
-            
-            
-
+        
+        
             case 'billconfirm':
                 
                 include "trangsp/billconfirm.php"; 
