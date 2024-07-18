@@ -20,21 +20,17 @@
     </div>  
     <div class="filter-category">
     <h3>Danh Mục</h3>
-    <?php foreach ($listdm as $dm) {
-        extract($dm);
-        $linkdm = "index.php?act=dmsp&iddm=" .$id;
-        echo '
-        <label><input type = "checkbox"><a href="'.$linkdm.'">'.$name.'</a></input></label><br>
-        
-        ';
-    }
-    ?>
+                        <form method="GET" action="index.php">
+                            <input type="hidden" name="act" value="dmsp">
+                            <ul>
+                                <?php foreach ($listdm as $dm): ?>
+                                    <?php extract($dm); ?>
+                                    <li><a href="index.php?act=dmsp&iddm=<?= $id; ?>"><?= $name; ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </form>
              </div>
-                <div class="filter-sort">
-                    <h3>Tìm kiếm theo:</h3>
-                    <label><input type="radio" name="sort"> Giá thấp nhất</label><br>
-                    <label><input type="radio" name="sort"> Giá cao nhất</label>
-                </div>
+               
             </div>
         </aside>
         </div>
@@ -50,8 +46,8 @@
                             <a href="<?= $linksp ?>"><img src="view/images/<?= $sp['img'] ?>" alt="<?= $sp['name'] ?>"></a>
                         <?php endif; ?>
                         <h5 style="color: black"><?= $sp['name'] ?></h5>
-                        <p style="color: black"><?= $sp['import_price'] ?></p>
-                    </div>
+                        <p style="color: black"><?= number_format($sp['price'], 0, ',', '.') ?>đ</p>
+                        </div>
                 <?php endforeach; ?>
             </div>
         </main>

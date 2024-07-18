@@ -31,11 +31,7 @@
                             </ul>
                         </form>
                     </div>
-                    <div class="filter-sort">
-                        <h3>Tìm kiếm theo:</h3>
-                        <label><input type="radio" name="sort"> Giá thấp nhất</label><br>
-                        <label><input type="radio" name="sort"> Giá cao nhất</label>
-                    </div>
+                    
                 </div>
             </div>
         </aside>

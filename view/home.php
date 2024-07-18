@@ -31,7 +31,7 @@
         <div class="card-body">
             <h5 class="card-title"><?= $sp['name'] ?></h5>
             <p class="card-text"><?= $sp['mota'] ?></p>
-            <h6><?= $sp['import_price'] ?></h6>
+            <h6><?= number_format($sp['price'], 0, ',', '.') ?>đ</h6>
             <button class="button-color">Mua Ngay →</button>
         </div>
     </div>
@@ -41,7 +41,7 @@
 
     <div class="row align-items-center margin-down">
         <div class="col-md-6">
-            <h3>Xiaomi</h3>
+            <h3>SamSung</h3>
         </div>
         <div class="col-md-6 see-all-margin">
         <a href="index.php?act=dmsp&iddm=6"><h5>Xem tất cả</h5></a>
@@ -69,7 +69,7 @@ foreach ($iphoneProducts as $sp) :
         <div class="card-body">
             <h5 class="card-title"><?= $sp['name'] ?></h5>
             <p class="card-text"><?= $sp['mota'] ?></p>
-            <h6><?= $sp['import_price'] ?> </h6>
+            <h6><?= number_format($sp['price'], 0, ',', '.') ?>đ</h6>
             <button class="button-color">Mua Ngay →</button>
         </div>
     </div>

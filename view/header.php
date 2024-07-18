@@ -35,7 +35,7 @@
                     <a class="nav-link" href="index.php?act=sanpham">Sản Phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Giỏ Hàng</a>
+                        <a class="nav-link" href="index.php?act=giohang">Giỏ Hàng</a>
                     </li>
                     <?php
                 if (isset($_SESSION['user'])) {
