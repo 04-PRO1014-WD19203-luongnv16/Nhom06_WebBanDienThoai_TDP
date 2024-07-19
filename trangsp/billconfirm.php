@@ -1,13 +1,23 @@
 <?php
+session_start();
 
+if (!isset($_SESSION['user']) || !isset($_SESSION['bill'])) {
+    header('Location: index.php');
+    exit();
+}
 
 $iduser = $_SESSION['user']['id'];
 $cartItems = load_cart_by_user($iduser);
-
-
-$customer = $_SESSION['user'];
-
+$tt = $_SESSION['bill'];
 $orderID = strtoupper(uniqid());
+
+$paymentMethods = [
+    1 => 'Thanh toán khi nhận hàng',
+    2 => 'Chuyển khoản ngân hàng',
+    3 => 'Thanh toán qua thẻ tín dụng'
+];
+
+$pttt = $paymentMethods[$tt['pttt']] ?? 'Không xác định';
 ?>
 
 <!DOCTYPE html>
@@ -21,16 +31,18 @@ $orderID = strtoupper(uniqid());
 </head>
 <body>
     <div class="container">
-        <h2 style = "color:black">Xác nhận đơn hàng</h2>
-        <p style = "color:black">Cảm ơn bạn đã mua hàng!</p>
-        <p style = "color:black">Mã đơn hàng của bạn là: <strong><?= $orderID ?></strong></p>
-        <h3 style = "color:black">Thông tin khách hàng:</h3>
-        <p style = "color:black">Họ và tên: <?= $customer['hoten'] ?></p>
-        <p style = "color:black">Email: <?= $customer['email'] ?></p>
-        <p style = "color:black">Số điện thoại: <?= $customer['tel'] ?></p>
+        <h2 style="color:black">Xác nhận đơn hàng</h2>
+        <p style="color:black">Cảm ơn bạn đã mua hàng!</p>
+        <p style="color:black">Mã đơn hàng của bạn là: <strong><?= $orderID ?></strong></p>
+        <h3 style="color:black">Thông tin khách hàng:</h3>
+        <p style="color:black">Họ và tên: <?= $tt['hoten'] ?></p>
+        <p style="color:black">Email: <?= $tt['email'] ?></p>
+        <p style="color:black">Số điện thoại: <?= $tt['sdt'] ?></p>
+        <p style="color:black">Địa Chỉ: <?= $tt['diachi'] ?></p>
+        <p style="color:black">Phương thức thanh toán: <?= $pttt ?></p>
 
-        <h3 style = "color:black">Chi tiết đơn hàng:</h3>
-        <table style = "color:black">
+        <h3 style="color:black">Chi tiết đơn hàng:</h3>
+        <table style="color:black">
             <tr>
                 <th>Hình ảnh</th>
                 <th>Tên sản phẩm</th>
@@ -49,15 +61,15 @@ $orderID = strtoupper(uniqid());
                 echo "<tr>
                     <td><img src='view/images/{$item['img']}' width='100' alt='{$item['name']}'></td>
                     <td>{$item['name']}</td>
-                    <td>{$price} ₫</td>
+                    <td>" . number_format($price) . " ₫</td>
                     <td>{$soluong}</td>
-                    <td>{$total} ₫</td>
+                    <td>" . number_format($total) . " ₫</td>
                 </tr>";
             }
             ?>
             <tr>
                 <td colspan="4" class="text-right"><strong>Tổng cộng:</strong></td>
-                <td><strong><?= $grandTotal ?> ₫</strong></td>
+                <td><strong><?= number_format($grandTotal) ?> ₫</strong></td>
             </tr>
         </table>
     </div>

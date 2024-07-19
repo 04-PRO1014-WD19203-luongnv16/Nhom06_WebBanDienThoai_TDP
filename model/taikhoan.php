@@ -1,9 +1,9 @@
 <?php
-function insert_taikhoan($username, $password,$email,$tel){
-    if (empty($username) || empty($password) || empty($email) || empty($tel)) {
+function insert_taikhoan($username, $password,$email,$tel,$hoten){
+    if (empty($username) || empty($password) || empty($email) || empty($tel) || empty($hoten)) {
         return false; 
     }
-    $sql = "INSERT INTO taikhoan (username, password, email,tel) VALUES ('$username', '$password', '$email','$tel')";
+    $sql = "INSERT INTO taikhoan (username, password, email, tel, hoten) VALUES ('$username', '$password', '$email', '$tel', '$hoten')";
     pdo_execute($sql);
 }
 
@@ -17,8 +17,8 @@ function checkemail($email){
     return pdo_query_one($sql);
 }
 
-function update_taikhoan($id, $username, $password, $email, $phone, $diachi) {
-    $sql = "UPDATE taikhoan SET username = '".$username."', password = '".$password."', email = '".$email."', phone = '".$phone."', diachi = '".$diachi."' WHERE id = ".$id;
+function update_taikhoan($id, $username, $password, $email, $phone, $diachi,$hoten) {
+    $sql = "UPDATE taikhoan SET username = '$username', password = '$password', email = '$email', phone = '$phone', diachi = '$diachi', hoten = '$hoten' WHERE id = $id";
     return pdo_query_one($sql);
 }
 

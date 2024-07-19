@@ -18,7 +18,7 @@ $total = isset($_GET['total']) ? $_GET['total'] : 0;
         <h2>Thông tin đặt hàng</h2>
         <form action="index.php?act=bill" method="post">
             <label for="hoten">Họ và tên:</label>
-            <input type="text" id="hoten" name="hoten" required>
+            <input type="text" id="hoten" name="hoten"  required>
 
             <label for="diachi">Địa chỉ:</label>
             <input type="text" id="diachi" name="diachi" required>
@@ -27,11 +27,11 @@ $total = isset($_GET['total']) ? $_GET['total'] : 0;
             <input type="text" id="sdt" name="sdt" required>
 
             <label for="email">Email:</label>
-                <input type="text" id="email" name="email" required>
-
+            <input type="email" id="email" name="email"   required>
 
             <label for="total">Tổng đơn hàng:</label>
-            <input type="text" id="total" name="total" value="<?= $total ?>đ" readonly>
+            <input type="text" id="total" name="total_display" value="<?= number_format($total) ?>đ" readonly>
+            <input type="hidden" id="total" name="total" value="<?= $total ?>">
 
             <label for="ngaydathang">Ngày Đặt Hàng:</label>
             <input type="date" id="ngaydathang" name="ngaydathang" value="<?= date('Y-m-d') ?>" required>
@@ -39,13 +39,13 @@ $total = isset($_GET['total']) ? $_GET['total'] : 0;
             <label for="pttt1">Phương thức thanh toán:</label>
             <table>
                 <tr>
-                    <td><input type="radio" id ="pttt1" name="pttt" value="1" required> Thanh toán trực tiếp</td>
+                    <td><input type="radio" id="pttt1" name="pttt" value="1" required> Thanh toán trực tiếp</td>
                 </tr>
                 <tr>
-                    <td><input type="radio" id ="pttt2" name="pttt" value="2" required> Chuyển khoản</td>
+                    <td><input type="radio" id="pttt2" name="pttt" value="2" required> Chuyển khoản</td>
                 </tr>
                 <tr>
-                    <td><input type="radio" id ="pttt3" name="pttt" value="3" required> Thanh toán online</td>
+                    <td><input type="radio" id="pttt3" name="pttt" value="3" required> Thanh toán online</td>
                 </tr>
             </table>
 

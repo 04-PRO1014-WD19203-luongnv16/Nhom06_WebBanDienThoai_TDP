@@ -62,8 +62,8 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $password = isset($_POST['password']) ? $_POST['password'] : '';
                 $email = isset($_POST['email']) ? $_POST['email'] : '';
                 $tel = isset($_POST['tel']) ? $_POST['tel'] : '';
-
-                if (empty($username) || empty($password) || empty($email) || empty($tel)) {
+                $hoten = isset($_POST['hoten']) ? $_POST['hoten'] : '';
+                if (empty($username) || empty($password) || empty($email) || empty($tel)|| empty($hoten)) {
                     $thongbao = "Vui lòng điền đầy đủ thông tin";
                 } elseif (strlen($password) < 8) {
                     $thongbao = "Mật khẩu phải ít nhất 8 ký tự";
@@ -117,7 +117,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             
 
 
-        case 'removefromcart':
+    case 'removefromcart':
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
         delete_cart($id); 
@@ -140,27 +140,38 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         break;
 
         case 'bill':
-            if (isset($_POST['xacnhan']) && $_POST['xacnhan']) {
-                $iduser = $_SESSION['user']['id'];
-                $hoten = $_POST['hoten'];
-                $diachi = $_POST['diachi'];
-                   $sdt = $_POST['sdt'];
-                      $email = $_POST['email'];
-                  $pttt = $_POST['pttt'];
-                         $ngaydathang = $_POST['ngaydathang'];
-               $total = $_POST['total'];
+            if (isset($_POST['xacnhan'])) {
+                $iduser = $_SESSION['user']['id'] ?? 0;
+                $hoten = $_POST['hoten'] ?? '';
+                $diachi = $_POST['diachi'] ?? '';
+                $sdt = $_POST['sdt'] ?? '';
+                $email = $_POST['email'] ?? '';
+                $pttt = $_POST['pttt'] ?? 1;
+                $ngaydathang = $_POST['ngaydathang'] ?? date('Y-m-d');
+                $total = $_POST['total'] ?? 0;
 
-              insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total);
+                // Loại bỏ ký tự 'đ' và dấu phẩy trước khi lưu trữ
+                $total = str_replace(['đ', ','], '', $total);
+                $total = floatval($total);
 
-           header('Location: index.php?act=thanhcong');
-             exit();
-}
+                // Lưu thông tin bill vào session
+                $_SESSION['bill'] = [
+                    'hoten' => $hoten,
+                    'diachi' => $diachi,
+                    'sdt' => $sdt,
+                    'email' => $email,
+                    'pttt' => $pttt,
+                    'ngaydathang' => $ngaydathang,
+                    'total' => $total
+                ];
+
+                insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total);
+                    header('Location: index.php?act=billconfirm');
+            }
             include "trangsp/bill.php";
             break;
-        
-        
-        
-        
+
+           
             case 'billconfirm':
                 
                 include "trangsp/billconfirm.php"; 

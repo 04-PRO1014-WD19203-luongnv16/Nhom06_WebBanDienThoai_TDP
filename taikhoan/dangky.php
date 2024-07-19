@@ -5,15 +5,15 @@ if (isset($_POST['dangky'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $tel = $_POST['tel'];
-
-        if (empty($username) || empty($password) || empty($email) || empty($tel)) {
+        $hoten = $_POST['hoten'];
+        if (empty($username) || empty($password) || empty($email) || empty($tel)|| empty($hoten)) {
             $thongbao = "Vui lòng điền đầy đủ thông tin";
         } else if (strlen($password) < 8) {
             $thongbao = "Mật khẩu phải ít nhất 8 ký tự";
         } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $thongbao = "Email không hợp lệ";
         } else {
-            insert_taikhoan($username, $password, $email, $tel);
+            insert_taikhoan($username, $password, $email, $tel,$hoten);
             $thongbao = "Đăng ký thành công!";
         }
     } else {
@@ -34,7 +34,7 @@ if (isset($_POST['dangky'])) {
                         <input type="email" class="auth-form-input" placeholder="Email" name="email">
                     </div>
                     <input type="tel" class="auth-form-input" placeholder="Số Điện Thoại" name="tel" id="tel">
-                    
+                    <input type="text"class="auth-form-input" placeholder="Họ và Tên" name ="hoten" id = "hoten" >
                     <div class="footer-action">
                         <input type="submit" value="Đăng Ký" class="auth-submit" name="dangky">
                         <a href="index.php?act=dangnhap" class="auth-btn-direct">Đăng Nhập</a>
