@@ -30,9 +30,8 @@
         <a href="<?= $linksp ?>"><img src="view/images/<?= $sp['img'] ?>" class="card-img-top" alt="<?= $sp['name'] ?>"></a>
         <div class="card-body">
             <h5 class="card-title"><?= $sp['name'] ?></h5>
-            <p class="card-text"><?= $sp['mota'] ?></p>
             <h6><?= number_format($sp['price'], 0, ',', '.') ?>đ</h6>
-            <button class="button-color">Mua Ngay →</button>
+            <a href="<?= $linksp ?>"><button class="button-color">Mua Ngay →</button></a>
         </div>
     </div>
 <?php endforeach; ?>
@@ -68,9 +67,8 @@ foreach ($iphoneProducts as $sp) :
         <a href="<?= $linksp ?>"><img src="view/images/<?= $sp['img'] ?>" class="card-img-top" alt="<?= $sp['name'] ?>"></a>
         <div class="card-body">
             <h5 class="card-title"><?= $sp['name'] ?></h5>
-            <p class="card-text"><?= $sp['mota'] ?></p>
             <h6><?= number_format($sp['price'], 0, ',', '.') ?>đ</h6>
-            <button class="button-color">Mua Ngay →</button>
+            <a href="<?= $linksp ?>"><button class="button-color">Mua Ngay →</button></a>
         </div>
     </div>
 <?php endforeach; ?>

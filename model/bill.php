@@ -1,11 +1,10 @@
 <?php
 
 function insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total) {
-    $sql = "INSERT INTO bill(iduser, hoten, diachi, sdt, email, pttt, ngaydathang, total) 
-            VALUES ('$iduser', '$hoten', '$diachi', '$sdt', '$email', '$pttt', '$ngaydathang', '$total')";
-    pdo_execute($sql);
+    $sql = "INSERT INTO bill (iduser, hoten, diachi, sdt, email, pttt, ngaydathang, total) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    pdo_execute($sql, $iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total);
 }
-
 function update_bill_status($id, $status) {
     $sql = "UPDATE bill SET trangthai = $status WHERE id = $id";
     return pdo_execute($sql);

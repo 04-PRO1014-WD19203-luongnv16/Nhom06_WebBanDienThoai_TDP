@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết sản phẩm</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="trangsp/sp.css"> 
 </head>
@@ -59,7 +54,7 @@
                         <input type="hidden" name="price" value="<?= $onesp['price'] ?>">
                         <input type="hidden" name="img" value="<?= $onesp['img'] ?>">
                         <label for="soluong" style = "color :red">Số Lượng</label>
-                        <input type="number" name="soluong" value="1" min="1" max="10">
+                        <input type="number" name="soluong" value="1" min="1" max="<?= $onesp['stock'] ?>">
                         <button type="submit" class="mua">Thêm Vào Giỏ Hàng</button>
                     </form>
                 </div>

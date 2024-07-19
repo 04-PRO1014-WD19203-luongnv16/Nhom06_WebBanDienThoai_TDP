@@ -1,5 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+
+function formatCurrency($amount) {
+    return number_format($amount, 0, '.') . " ₫";
+}
+
+
+
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +56,7 @@
                             <a href="<?= $linksp ?>"><img src="view/images/<?= $sp['img'] ?>" alt="<?= $sp['name'] ?>"></a>
                         <?php endif; ?>
                         <h5 style="color: black"><?= $sp['name'] ?></h5>
-                        <p style="color: black"><?= $sp['import_price'] ?></p>
+                        <p style="color: black"><?= number_format($sp['price']) ?>đ</p>
                     </div>
                 <?php endforeach; ?>
                 </div>

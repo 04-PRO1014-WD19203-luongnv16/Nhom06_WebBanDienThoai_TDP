@@ -144,17 +144,17 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $iduser = $_SESSION['user']['id'];
                 $hoten = $_POST['hoten'];
                 $diachi = $_POST['diachi'];
-                $sdt = $_POST['sdt'];
-                $email = $_POST['email'];
-                $ngaydathang = date('Y-m-d');
-                $pttt = $_POST['pttt'];
-                $total = load_cart_total($iduser);
-                
-                insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total);
-                
-                header('Location: index.php?act=billconfirm');
-                exit();
-            }
+                   $sdt = $_POST['sdt'];
+                      $email = $_POST['email'];
+                  $pttt = $_POST['pttt'];
+                         $ngaydathang = $_POST['ngaydathang'];
+               $total = $_POST['total'];
+
+              insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total);
+
+           header('Location: index.php?act=thanhcong');
+             exit();
+}
             include "trangsp/bill.php";
             break;
         
