@@ -149,10 +149,10 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $pttt = $_POST['pttt'] ?? 1;
                 $ngaydathang = $_POST['ngaydathang'] ?? date('Y-m-d');
                 $total = $_POST['total'] ?? 0;
-
-                // Loại bỏ ký tự 'đ' và dấu phẩy trước khi lưu trữ
+                
                 $total = str_replace(['đ', ','], '', $total);
                 $total = floatval($total);
+                $trangthai = $_POST['trangthai'] ?? 0;
 
                 // Lưu thông tin bill vào session
                 $_SESSION['bill'] = [
@@ -162,11 +162,12 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     'email' => $email,
                     'pttt' => $pttt,
                     'ngaydathang' => $ngaydathang,
-                    'total' => $total
-                ];
+                    'total' => $total,
+                    'trangthai' => $trangthai
 
-                insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total);
-                    header('Location: index.php?act=billconfirm');
+                ];
+                insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total,$trangthai);
+                 header('Location: index.php?act=billconfirm');
             }
             include "trangsp/bill.php";
             break;

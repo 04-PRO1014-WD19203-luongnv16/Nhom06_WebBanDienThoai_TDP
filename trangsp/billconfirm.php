@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 if (!isset($_SESSION['user']) || !isset($_SESSION['bill'])) {
     header('Location: index.php');
@@ -18,6 +17,16 @@ $paymentMethods = [
 ];
 
 $pttt = $paymentMethods[$tt['pttt']] ?? 'Không xác định';
+
+// Xử lý trạng thái
+$statusLabels = [
+    0 => 'Đơn hàng mới',
+    1 => 'Đang xử lý',
+    2 => 'Đang giao hàng',
+    3 => 'Đã giao hàng'
+];
+
+$status = $statusLabels[$tt['trangthai']] ?? 'Không xác định';
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +48,7 @@ $pttt = $paymentMethods[$tt['pttt']] ?? 'Không xác định';
         <p style="color:black">Email: <?= $tt['email'] ?></p>
         <p style="color:black">Số điện thoại: <?= $tt['sdt'] ?></p>
         <p style="color:black">Địa Chỉ: <?= $tt['diachi'] ?></p>
+        <p style="color:black">Trạng Thái: <?= $status ?></p>
         <p style="color:black">Phương thức thanh toán: <?= $pttt ?></p>
 
         <h3 style="color:black">Chi tiết đơn hàng:</h3>

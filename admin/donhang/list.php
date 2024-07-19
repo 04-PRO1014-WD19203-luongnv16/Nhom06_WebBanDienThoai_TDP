@@ -1,6 +1,5 @@
 <?php
-
-
+// Hàm lấy tên phương thức thanh toán
 function get_payment_method_name($pttt_code) {
     $payment_methods = [
         1 => 'Chuyển khoản',
@@ -9,7 +8,27 @@ function get_payment_method_name($pttt_code) {
     ];
     return isset($payment_methods[$pttt_code]) ? $payment_methods[$pttt_code] : 'Không xác định';
 }
+
+function get_order_status_name($status_code) {
+    $status_labels = [
+        0 => 'Đơn hàng mới',
+        1 => 'Đang xử lý',
+        2 => 'Đang giao hàng',
+        3 => 'Đã giao hàng'
+    ];
+    return isset($status_labels[$status_code]) ? $status_labels[$status_code] : 'Không xác định';
+}
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANH SÁCH ĐƠN HÀNG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="trangsp/sp.css"> 
+</head>
+<body>
     <main class="main-wrapper">
         <div class="main-content">
             <div class="page-breadcrumb">
@@ -31,6 +50,7 @@ function get_payment_method_name($pttt_code) {
                                         <th>Phương Thức Thanh Toán</th>
                                         <th>Total</th>
                                         <th>Ngày Đặt Hàng</th>
+                                        <th>Trạng Thái</th>
                                         <th>Chức Năng</th>
                                     </tr>
                                 </thead>
@@ -38,6 +58,7 @@ function get_payment_method_name($pttt_code) {
                                     <?php
                                     foreach ($orders as $order) {
                                         $pttt_name = get_payment_method_name($order['pttt']);
+                                        $status_name = get_order_status_name($order['trangthai']);
                                         echo "<tr>
                                             <td>{$order['id']}</td>
                                             <td>{$order['iduser']}</td>
@@ -48,6 +69,7 @@ function get_payment_method_name($pttt_code) {
                                             <td>{$pttt_name}</td>
                                             <td>" . number_format($order['total']) . "đ</td>
                                             <td>{$order['ngaydathang']}</td>
+                                            <td>{$status_name}</td>
                                             <td>
                                                 <a href='index.php?act=updatedh&id={$order['id']}' class='sua'>
                                                     <i class='bi bi-pencil-square'></i>
