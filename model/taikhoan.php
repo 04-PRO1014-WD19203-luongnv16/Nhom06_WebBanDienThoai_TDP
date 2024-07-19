@@ -24,6 +24,13 @@ function update_taikhoan($id, $username, $password, $email, $phone, $diachi,$hot
 
 function loadall_taikhoan(){
     $sql = "SELECT * FROM taikhoan ORDER BY id DESC";
-    return pdo_query($sql);
+    $listtk = pdo_query($sql);
+    return $listtk;
 }
+
+function delete_taikhoan($id){
+    $sql = "DELETE FROM taikhoan WHERE id=".$id;
+    pdo_execute($sql);
+  }
+  
 ?>

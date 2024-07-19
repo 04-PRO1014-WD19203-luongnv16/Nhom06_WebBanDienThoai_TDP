@@ -21,7 +21,7 @@
                     </li>
                     <li class="menu-label">Quản lý</li>
                     <li>
-                      <a href="index.php?act" class="has-arrow">
+                      <a href="index.php?act=khachhang" class="has-arrow">
                         <div class="child-icon">
                           <i class="bi bi-people"></i>
                         </div>
