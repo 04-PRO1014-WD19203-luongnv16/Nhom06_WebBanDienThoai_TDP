@@ -77,36 +77,14 @@
                 <?=$img?>
               </div>
               <div class="mb-4">
-                <h5 class="mb-3">Giá Nhập</h5>
+                <h5 class="mb-3">Giá</h5>
                 <input
                   type="number"
-                  name="import_price"
+                  name="price"
                   id=""
                   class="form-control"
                   placeholder="Nhập giá nhập sản phẩm ở đây..."
                   value="<?=$import_price?>"
-                />
-              </div>
-              <div class="mb-4">
-                <h5 class="mb-3">Giá Sale</h5>
-                <input
-                  type="number"
-                  name="sale_price"
-                  id=""
-                  class="form-control"
-                  placeholder="Nhập giá sale sản phẩm ở đây..."
-                  value="<?=$sale_price?>"
-                />
-              </div>
-              <div class="mb-4">
-                <h5 class="mb-3">Giá Niêm Yết</h5>
-                <input
-                  type="number"
-                  name="listed_price"
-                  id=""
-                  class="form-control"
-                  placeholder="Nhập giá niêm yết sản phẩm ở đây..."
-                  value="<?=$listed_price?>"
                 />
               </div>
               <div class="mb-4">
@@ -133,4 +111,3 @@
         </div>
       </div>
     </main>
-    <!-- End main wrapper -->

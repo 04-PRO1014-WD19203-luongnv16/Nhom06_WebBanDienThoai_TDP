@@ -32,13 +32,22 @@ if (isset($_SESSION['user']))
                     <div class="auth-forgot-password">
                         <a href="#">Quên Mật Khẩu</a>
                     </div>
+                    <?php
+                if (isset($thongbao) && !empty($thongbao)) {
+                    echo "<span>" . $thongbao . "</span>";
+                }
+                ?>
                 </div>
             </div>
+            
             <div class="auth-action-right">
                 <div class="auth-image">
                     <img src="taikhoan/assets/vector.jpg" alt="login">
                 </div>
+                
             </div>
         </div>
+        
     </div>
+    
 </form>

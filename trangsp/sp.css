@@ -245,3 +245,59 @@ label.star:before {
     float: left;
     width: 100%;
 }
+/* gio hang */
+
+/*bill*/
+/* Style for the cart and bill confirmation pages */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+td img {
+    max-width: 100px;
+    height: auto;
+}
+
+.button-color {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.button-color:hover {
+    background-color: #004da8;
+}
+
+.text-right {
+    text-align: right;
+}

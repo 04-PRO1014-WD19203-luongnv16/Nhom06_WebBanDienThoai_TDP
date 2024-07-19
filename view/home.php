@@ -30,9 +30,8 @@
         <a href="<?= $linksp ?>"><img src="view/images/<?= $sp['img'] ?>" class="card-img-top" alt="<?= $sp['name'] ?>"></a>
         <div class="card-body">
             <h5 class="card-title"><?= $sp['name'] ?></h5>
-            <p class="card-text"><?= $sp['mota'] ?></p>
-            <h6><?= $sp['import_price'] ?></h6>
-            <button class="button-color">Mua Ngay →</button>
+            <h6><?= number_format($sp['price'], 0, ',', '.') ?>đ</h6>
+            <a href="<?= $linksp ?>"><button class="button-color">Mua Ngay →</button></a>
         </div>
     </div>
 <?php endforeach; ?>
@@ -41,7 +40,7 @@
 
     <div class="row align-items-center margin-down">
         <div class="col-md-6">
-            <h3>Xiaomi</h3>
+            <h3>SamSung</h3>
         </div>
         <div class="col-md-6 see-all-margin">
         <a href="index.php?act=dmsp&iddm=6"><h5>Xem tất cả</h5></a>
@@ -68,9 +67,8 @@ foreach ($iphoneProducts as $sp) :
         <a href="<?= $linksp ?>"><img src="view/images/<?= $sp['img'] ?>" class="card-img-top" alt="<?= $sp['name'] ?>"></a>
         <div class="card-body">
             <h5 class="card-title"><?= $sp['name'] ?></h5>
-            <p class="card-text"><?= $sp['mota'] ?></p>
-            <h6><?= $sp['import_price'] ?> </h6>
-            <button class="button-color">Mua Ngay →</button>
+            <h6><?= number_format($sp['price'], 0, ',', '.') ?>đ</h6>
+            <a href="<?= $linksp ?>"><button class="button-color">Mua Ngay →</button></a>
         </div>
     </div>
 <?php endforeach; ?>

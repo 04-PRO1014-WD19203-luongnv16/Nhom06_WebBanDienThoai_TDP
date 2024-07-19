@@ -5,6 +5,7 @@
   include '../model/sanpham.php';
   include '../model/danhmuc.php';
   include '../model/pdo.php';
+  include '../model/bill.php';
 
   // controller
   if(isset($_GET['act'])){
@@ -59,12 +60,10 @@
           }else{
             // echo 'Không upload được';
           }
-          $import_price =$_POST['import_price'];
-          $sale_price =$_POST['sale_price'];
-          $listed_price =$_POST['listed_price'];
+          $price =$_POST['price'];
           $stock =$_POST['stock'];
           $iddm =$_POST['iddm'];
-          insert_sanpham($name,$mota,$img,$import_price,$sale_price,$listed_price,$stock,$iddm);
+          insert_sanpham($name,$mota,$img,$price,$stock,$iddm);
           $thongbao= "Thêm mới thành công!";
         }
         $listdanhmuc = loadAll_danhmuc();
@@ -103,12 +102,10 @@
           }else{
             // echo 'Không upload được';
           }
-          $import_price =$_POST['import_price'];
-          $sale_price =$_POST['sale_price'];
-          $listed_price =$_POST['listed_price'];
+          $price =$_POST['price'];
           $stock =$_POST['stock'];
           $iddm =$_POST['iddm'];
-          update_sanpham($id,$name,$mota,$img,$import_price,$sale_price,$listed_price,$stock,$iddm);
+          update_sanpham($id,$name,$mota,$img,$price,$stock,$iddm);
           $thongbao= "Cập nhật thành công!";
         }
         $listdanhmuc = loadAll_danhmuc();
@@ -116,9 +113,12 @@
         include './sanpham/list.php';
         break;
       //Giỏ hàng  
+
       case 'listdh':
-        include './donhang/list.php';
+        $orders = load_all_orders(); 
+        include './donhang/list.php'; 
         break;
+    
       case 'updatedh':
         include './donhang/update.php';
         break;

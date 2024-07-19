@@ -49,8 +49,6 @@
                       <th>Tên sản phẩm</th>
                       <th>Ảnh</th>
                       <th>Giá </th>
-                      <th>Giá sale</th>
-                      <th>Giá niêm yết</th>
                       <th>Tồn kho</th>
                       <th>Chức năng</th>
                     </tr>
@@ -64,9 +62,7 @@
                       echo '
                      <td> '.$name.'</td>              
                     <td><img src="../view/images/'.$img.'" style="width:200px;height:auto;"></td>
-                      <td>'.$import_price.'<u>đ</u></td>
-                      <td>'.$sale_price.'<u>đ</u></td>
-                      <td>'.$listed_price.'<u>đ</u></td>
+                      <td>'.$price.'<u>đ</u></td>
                       <td>'.$stock.'</td>
                       <td>
                         <a href="'.$suasp.'" class="sua">

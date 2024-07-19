@@ -12,7 +12,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="taikhoan/css/style.css">
     <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />    
 </head>
 <body>
@@ -35,7 +35,7 @@
                     <a class="nav-link" href="index.php?act=sanpham">Sản Phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Giỏ Hàng</a>
+                        <a class="nav-link" href="index.php?act=giohang">Giỏ Hàng</a>
                     </li>
                     <?php
                 if (isset($_SESSION['user'])) {
