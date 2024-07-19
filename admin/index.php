@@ -6,6 +6,7 @@
   include '../model/danhmuc.php';
   include '../model/pdo.php';
   include '../model/bill.php';
+  include '../model/taikhoan.php';
 
   // controller
   if(isset($_GET['act'])){
@@ -113,12 +114,22 @@
         include './sanpham/list.php';
         break;
       //Giỏ hàng  
-
+      case 'khachhang':
+         $listtk = loadall_taikhoan();
+        include './khachhang/list.php';
+        break;
       case 'listdh':
         $orders = load_all_orders(); 
         include './donhang/list.php'; 
         break;
-    
+
+        case 'xoatk':
+          if(isset($_GET['id'])&&$_GET['id']>0){
+            delete_taikhoan($_GET['id']);
+          }
+          $listtk = loadall_taikhoan();
+          include './taikhoan/list.php';
+          break;
       case 'updatedh':
         include './donhang/update.php';
         break;

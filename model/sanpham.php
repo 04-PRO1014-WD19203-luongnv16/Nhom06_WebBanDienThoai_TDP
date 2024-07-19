@@ -17,6 +17,7 @@ function loadAll_sanpham($iddm = 0){
     $sql = "DELETE FROM sanpham WHERE id=".$id;
     pdo_execute($sql);
   }
+  
   function loadOne_sanpham($id){
     $sql = "SELECT * FROM sanpham WHERE id=".$id;
     $sp = pdo_query_one($sql);
