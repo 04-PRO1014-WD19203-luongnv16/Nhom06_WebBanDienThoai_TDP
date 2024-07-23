@@ -18,7 +18,6 @@ $paymentMethods = [
 
 $pttt = $paymentMethods[$tt['pttt']] ?? 'Không xác định';
 
-// Xử lý trạng thái
 $statusLabels = [
     0 => 'Đơn hàng mới',
     1 => 'Đang xử lý',
