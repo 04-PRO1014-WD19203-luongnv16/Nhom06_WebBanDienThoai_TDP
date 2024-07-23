@@ -35,11 +35,11 @@ $status = $statusLabels[$tt['trangthai']] ?? 'Không xác định';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xác nhận đơn hàng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="trangsp/sp.css"> 
+    <link rel="stylesheet" href="trangsp/sp.css">   
 </head>
 <body>
     <div class="container">
-        <h2 style="color:black">Xác nhận đơn hàng</h2>
+        <h2 style="color:black">Thanh Toán Thành Công</h2>
         <p style="color:black">Cảm ơn bạn đã mua hàng!</p>
         <p style="color:black">Mã đơn hàng của bạn là: <strong><?= $orderID ?></strong></p>
         <h3 style="color:black">Thông tin khách hàng:</h3>

@@ -37,7 +37,7 @@ function formatCurrency($amount) {
                 <th>Hành động</th>
             </tr>
             <?php
-if ($totalCart && isset($totalCart['total'])) {
+     if ($totalCart && isset($totalCart['total'])) {
     foreach ($cartItems as $item) {
         $price = is_numeric($item['price']) ? $item['price'] : 0;
         $soluong = is_numeric($item['soluong']) ? $item['soluong'] : 0;

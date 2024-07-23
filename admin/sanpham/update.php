@@ -84,7 +84,7 @@
                   id=""
                   class="form-control"
                   placeholder="Nhập giá nhập sản phẩm ở đây..."
-                  value="<?=$import_price?>"
+                  value="<?=$price?>"
                 />
               </div>
               <div class="mb-4">
