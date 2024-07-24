@@ -13,17 +13,14 @@ $orderID = strtoupper(uniqid());
 $lastBill = load_bill_by_user($iduser)[0] ?? [];
 $billDetails = load_bill_detail_by_id($lastBill['id'] ?? 0);
 
-// Các phương thức thanh toán
 $paymentMethods = [
     1 => 'Thanh toán khi nhận hàng',
     2 => 'Chuyển khoản ngân hàng',
     3 => 'Thanh toán qua thẻ tín dụng'
 ];
 
-// Phương thức thanh toán
 $pttt = $paymentMethods[$tt['pttt']] ?? 'Không xác định';
 
-// Các trạng thái đơn hàng
 $statusLabels = [
     0 => 'Đơn hàng mới',
     1 => 'Đang xử lý',
@@ -31,8 +28,7 @@ $statusLabels = [
     3 => 'Đã giao hàng'
 ];
 
-// Trạng thái đơn hàng
-$status = $statusLabels[$tt['trangthai']] ?? 'Không xác định';
+$status = $statusLabels[$lastBill['trangthai']] ?? 'Không xác định';
 ?>
 
 <!DOCTYPE html>

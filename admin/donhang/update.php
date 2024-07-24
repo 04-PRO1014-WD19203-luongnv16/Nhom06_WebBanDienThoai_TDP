@@ -68,14 +68,14 @@ function get_payment_method_name($pttt_code) {
         <div class="mb-4">
           <form method="post" action="">
             <select name="trangthai" class="tinh_trang">
-              <option value="0" <?= $suabill['trangthai'] == 0 ? 'selected' : '' ?>>Chưa xử lý</option>
-              <option value="1" <?= $suabill['trangthai'] == 1 ? 'selected' : '' ?>>Đã xử lý</option>
-              <option value="2" <?= $suabill['trangthai'] == 2 ? 'selected' : '' ?>>Đã giao</option>
-              <option value="3" <?= $suabill['trangthai'] == 3 ? 'selected' : '' ?>>Hủy đơn</option>
+              <option value="0" <?= $suabill['trangthai'] == 0 ? 'selected' : '' ?>>Đơn Hàng Mới</option>
+              <option value="1" <?= $suabill['trangthai'] == 1 ? 'selected' : '' ?>>Đang xử lý</option>
+              <option value="2" <?= $suabill['trangthai'] == 2 ? 'selected' : '' ?>>Đang giao hàng</option>
+              <option value="3" <?= $suabill['trangthai'] == 3 ? 'selected' : '' ?>>Đã giao hàng</option>
             </select>
             <button type="submit" class="success">Xác nhận đơn hàng</button>
           </form><br>
-          <a href="index.php?act=listdh" class="danger">Trở về</a>
+          <a href="index.php?act=list" class="danger">Trở về</a>
         </div>
       </div>
     </div>

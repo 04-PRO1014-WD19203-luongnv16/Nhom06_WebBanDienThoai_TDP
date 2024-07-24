@@ -16,7 +16,7 @@ function load_bill_by_user($iduser) {
     return pdo_query($sql);
 }
 
-function load_bill_by_id($id) {
+function load_bill_by_id($id) { 
     $sql = "SELECT * FROM bill WHERE id = $id";
     return pdo_query_one($sql);
 }
@@ -26,9 +26,10 @@ function load_all_orders() {
     $order = pdo_query($sql);
     return $order;
 }
+
 function update_bill_status($id, $status) {
-    $sql = "UPDATE bill SET trangthai = $status WHERE id = $id";
-    return pdo_execute($sql);
+    $sql = "UPDATE bill SET trangthai = ? WHERE id = ?";
+    return pdo_execute($sql, $status, $id);
 }
 
 function loadOne_bill($id) {
