@@ -158,6 +158,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         }
         break;
 
+
         case 'bill':
             if (isset($_POST['xacnhan'])) {
                 $iduser = $_SESSION['user']['id'] ?? 0;
@@ -168,34 +169,37 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $pttt = $_POST['pttt'] ?? 1;
                 $ngaydathang = $_POST['ngaydathang'] ?? date('Y-m-d');
                 $total = $_POST['total'] ?? 0;
-                
+        
                 $total = str_replace(['đ', ','], '', $total);
                 $total = floatval($total);
                 $trangthai = $_POST['trangthai'] ?? 0;
-
-                // Lưu thông tin bill vào session
-                $_SESSION['bill'] = [
-                    'hoten' => $hoten,
-                    'diachi' => $diachi,
-                    'sdt' => $sdt,
-                    'email' => $email,
-                    'pttt' => $pttt,
-                    'ngaydathang' => $ngaydathang,
-                    'total' => $total,
-                    'trangthai' => $trangthai
-
-                ];
-                insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total,$trangthai);
-                 header('Location: index.php?act=billconfirm');
+        
+                $idbill = insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total, $trangthai);
+        
+                if ($idbill) {
+                    $cartItems = load_cart_by_user($iduser);
+                    foreach ($cartItems as $item) {
+                        insert_bill_detail($idbill, $item['id'], $item['soluong'], $item['price'], $item['thanhtien']);
+                    }
+                    // Xóa giỏ hàng sau khi xác nhận đơn hàng
+                    header('Location: index.php?act=billconfirm');
+                    exit();
+                } else {
+                    $thongbao = "Có lỗi xảy ra khi xử lý đơn hàng. Vui lòng thử lại.";
+                }
             }
             include "trangsp/bill.php";
             break;
+        
 
+        case 'billconfirm':
+        include "trangsp/billconfirm.php";
            
-            case 'billconfirm':
-                
-                include "trangsp/billconfirm.php"; 
-                break;
+            break;
+
+            
+
+            
 
         case 'thoat':
             session_unset();
