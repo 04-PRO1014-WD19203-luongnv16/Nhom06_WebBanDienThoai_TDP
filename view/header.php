@@ -37,6 +37,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?act=giohang">Giỏ Hàng</a>
                     </li>
+
                     <?php
                 if (isset($_SESSION['user'])) {
                     extract($_SESSION['user']);
@@ -50,6 +51,9 @@
                             <a href="admin/index.php">Đăng nhập admin</a>
                         </li>
                         <?php } ?>
+                        <li class="nav-item">
+                        <a class="nav-link" href="index.php?act=billconfirm">Đơn Hàng</a>
+                    </li>
                         <li>
                             <a href="index.php?act=thoat" class ="nav-link" style="color: red;">Thoát</a>
                         </li>

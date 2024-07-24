@@ -130,9 +130,22 @@
           $listtk = loadall_taikhoan();
           include './taikhoan/list.php';
           break;
-      case 'updatedh':
-        include './donhang/update.php';
-        break;
+          
+          case 'updatedh':
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $suabill = loadOne_bill($_GET['id']); 
+            }
+                  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['trangthai'])) {
+                $id = $_GET['id'];
+                $trangthai = $_POST['trangthai'];
+                update_bill_status($id, $trangthai); 
+                exit;
+            }
+        
+            include './donhang/update.php'; 
+            break;
+        
+        
       default:
         include './component/home.php';
         break;

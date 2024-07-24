@@ -99,24 +99,23 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             case 'addtocart':
                 if (isset($_SESSION['user'])) {
                     $iduser = $_SESSION['user']['id'];
+                    $id = $_POST['id']; 
                     $img = $_POST['img'];
                     $name = $_POST['name'];
                     $price = $_POST['price'];
                     $soluong = isset($_POST['soluong']) ? intval($_POST['soluong']) : 1; 
                     $thanhtien = $price * $soluong;
-                    $idbill = 0; 
-                    
-                    insert_cart($iduser, $img, $name, $price, $soluong, $thanhtien, $idbill);
+                    $idbill = 0;
+                    insert_cart($iduser, $id, $img, $name, $price, $soluong, $thanhtien, $idbill);
                     header('Location: index.php?act=giohang');
                     exit();
                 } else {
                     header('Location: index.php?act=dangnhap');
                     exit();
                 }
-                break;  
+                break;
             
-
-
+    
     case 'removefromcart':
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
@@ -130,7 +129,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
     case 'giohang':
         if (isset($_SESSION['user'])) {
             $iduser = $_SESSION['user']['id'];
-            $cartItems = load_cart_by_user($iduser);
+            $gioHang = load_cart_by_user($iduser);
     
             include "trangsp/giohang.php";
         } else {
@@ -149,10 +148,10 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $pttt = $_POST['pttt'] ?? 1;
                 $ngaydathang = $_POST['ngaydathang'] ?? date('Y-m-d');
                 $total = $_POST['total'] ?? 0;
-
-                // Loại bỏ ký tự 'đ' và dấu phẩy trước khi lưu trữ
+                
                 $total = str_replace(['đ', ','], '', $total);
                 $total = floatval($total);
+                $trangthai = $_POST['trangthai'] ?? 0;
 
                 // Lưu thông tin bill vào session
                 $_SESSION['bill'] = [
@@ -162,11 +161,12 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                     'email' => $email,
                     'pttt' => $pttt,
                     'ngaydathang' => $ngaydathang,
-                    'total' => $total
-                ];
+                    'total' => $total,
+                    'trangthai' => $trangthai
 
-                insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total);
-                    header('Location: index.php?act=billconfirm');
+                ];
+                insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total,$trangthai);
+                 header('Location: index.php?act=billconfirm');
             }
             include "trangsp/bill.php";
             break;

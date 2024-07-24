@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 if (!isset($_SESSION['user']) || !isset($_SESSION['bill'])) {
     header('Location: index.php');
@@ -18,6 +17,15 @@ $paymentMethods = [
 ];
 
 $pttt = $paymentMethods[$tt['pttt']] ?? 'Không xác định';
+
+$statusLabels = [
+    0 => 'Đơn hàng mới',
+    1 => 'Đang xử lý',
+    2 => 'Đang giao hàng',
+    3 => 'Đã giao hàng'
+];
+
+$status = $statusLabels[$tt['trangthai']] ?? 'Không xác định';
 ?>
 
 <!DOCTYPE html>
@@ -27,11 +35,11 @@ $pttt = $paymentMethods[$tt['pttt']] ?? 'Không xác định';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xác nhận đơn hàng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="trangsp/sp.css"> 
+    <link rel="stylesheet" href="trangsp/sp.css">   
 </head>
 <body>
     <div class="container">
-        <h2 style="color:black">Xác nhận đơn hàng</h2>
+        <h2 style="color:black">Thanh Toán Thành Công</h2>
         <p style="color:black">Cảm ơn bạn đã mua hàng!</p>
         <p style="color:black">Mã đơn hàng của bạn là: <strong><?= $orderID ?></strong></p>
         <h3 style="color:black">Thông tin khách hàng:</h3>
@@ -39,6 +47,7 @@ $pttt = $paymentMethods[$tt['pttt']] ?? 'Không xác định';
         <p style="color:black">Email: <?= $tt['email'] ?></p>
         <p style="color:black">Số điện thoại: <?= $tt['sdt'] ?></p>
         <p style="color:black">Địa Chỉ: <?= $tt['diachi'] ?></p>
+        <p style="color:black">Trạng Thái: <?= $status ?></p>
         <p style="color:black">Phương thức thanh toán: <?= $pttt ?></p>
 
         <h3 style="color:black">Chi tiết đơn hàng:</h3>
