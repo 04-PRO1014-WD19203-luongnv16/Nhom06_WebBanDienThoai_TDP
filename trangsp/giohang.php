@@ -5,8 +5,8 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-$totalCart = load_cart_total($_SESSION['user']['id']);
-$total = isset($totalCart['total']) ? $totalCart['total'] : 0;
+$tongTien = load_cart_total($_SESSION['user']['id']);
+$total = isset($tongTien['total']) ? $tongTien['total'] : 0;
 
 function formatCurrency($amount) {
     return number_format($amount, 0, '.') . " ₫";
@@ -37,28 +37,28 @@ function formatCurrency($amount) {
                 <th>Hành động</th>
             </tr>
             <?php
-     if ($totalCart && isset($totalCart['total'])) {
-    foreach ($cartItems as $item) {
-        $price = is_numeric($item['price']) ? $item['price'] : 0;
-        $soluong = is_numeric($item['soluong']) ? $item['soluong'] : 0;
+     if ($tongTien && isset($tongTien['total'])) {
+    foreach ($gioHang as $sp) {
+        $price = is_numeric($sp['price']) ? $sp['price'] : 0;
+        $soluong = is_numeric($sp['soluong']) ? $sp['soluong'] : 0;
         $total = $price * $soluong;
         echo "<tr>
-            <td><img src='view/images/{$item['img']}' width='100' alt='{$item['name']}'></td>
-            <td>{$item['name']}</td>
+            <td><img src='view/images/{$sp['img']}' width='100' alt='{$sp['name']}'></td>
+            <td>{$sp['name']}</td>
             <td class='cart-price'>" . formatCurrency($price) . "</td>
             <td>$soluong</td>
             <td class='cart-total'>" . formatCurrency($total) . "</td>
-            <td><a href='index.php?act=removefromcart&id={$item['id']}'>Xóa</a></td>
+            <td><a href='index.php?act=removefromcart&id={$sp['id']}'>Xóa</a></td>
         </tr>";
     }
     echo "<tr>
         <td colspan='4'><strong>Tổng giỏ hàng:</strong></td>
-        <td class='cart-total'>" . formatCurrency($totalCart['total']) . "</td>
+        <td class='cart-total'>" . formatCurrency($tongTien['total']) . "</td>
         <td></td>
     </tr>";
     echo "<tr>
         <td colspan='6' class='text-right'>
-            <a href='index.php?act=bill&total=" . $totalCart['total'] . "' class='button-color'>Xác nhận</a>
+            <a href='index.php?act=bill&total=" . $tongTien['total'] .   "' class='button-color'>Xác nhận</a>
         </td>
     </tr>";
 } else {
