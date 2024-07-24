@@ -38,23 +38,12 @@
                     <hr>
                     <span style="color:#0066CC"><?= number_format($onesp['price'], 0, ',', '.') ?>đ</span>
                     <br>
-                    <div class="dangky">
-                        <h6>Đăng ký tư vấn</h6>
-                        <span>Nhập thông tin để nhận được tư vấn mua hàng</span>
-                        <br>
-                        <input type="text" placeholder="Họ và Tên">
-                        <input type="text" placeholder="Email">
-                        <input type="text" placeholder="Số điện thoại">
-                        <input type="button" value="Đăng ký tư vấn">
-                    </div>
                     <br>
                     <form action="index.php?act=addtocart" method="post">
                         <input type="hidden" name="id" value="<?= $onesp['id'] ?>">
                         <input type="hidden" name="name" value="<?= $onesp['name'] ?>">
                         <input type="hidden" name="price" value="<?= $onesp['price'] ?>">
                         <input type="hidden" name="img" value="<?= $onesp['img'] ?>">
-                        <label for="soluong" style = "color :red">Số Lượng</label>
-                        <input type="number" name="soluong" value="1" min="1" max="<?= $onesp['stock'] ?>">
                         <button type="submit" class="mua">Thêm Vào Giỏ Hàng</button>
                     </form>
                 </div>

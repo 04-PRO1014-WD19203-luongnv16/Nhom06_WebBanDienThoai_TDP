@@ -29,6 +29,12 @@ function delete_cart($id) {
     return pdo_execute($sql);
 }
 
+function update_cart($id, $soluong) {
+    $sql = "UPDATE cart SET soluong = $soluong WHERE id = $id";
+    pdo_execute($sql);
+}
+
+
 function update_cart_quantity($id, $soluong, $thanhtien) {
     $sql = "UPDATE cart SET soluong = :soluong, thanhtien = :thanhtien WHERE id = :id";
     pdo_execute($sql, [

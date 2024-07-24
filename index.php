@@ -125,6 +125,26 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
     }
     break;
 
+    case 'updatecart':
+        if (isset($_POST['id']) && isset($_POST['action'])) {
+            $id = $_POST['id'];
+            $action = $_POST['action'];
+            $soluong = isset($_POST['soluong']) ? intval($_POST['soluong']) : 1;
+    
+            if ($action == 'increase') {
+                $soluong++;
+            } elseif ($action == 'decrease' && $soluong > 1) {
+                $soluong--;
+            }
+    
+            update_cart($id, $soluong);
+            header('Location: index.php?act=giohang');
+            exit();
+        }
+        break;
+
+        
+
 
     case 'giohang':
         if (isset($_SESSION['user'])) {
