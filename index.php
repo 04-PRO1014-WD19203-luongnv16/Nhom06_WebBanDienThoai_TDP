@@ -8,6 +8,7 @@ include "view/header.php";
 include "model/taikhoan.php";
 include "model/bill.php";
 include "model/cart.php";
+include "model/bill_detail.php";
 
 $listdm = loadall_danhmuc();
 $spnew = loadAll_sanpham();
@@ -179,9 +180,20 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 if ($idbill) {
                     $cartItems = load_cart_by_user($iduser);
                     foreach ($cartItems as $item) {
-                        insert_bill_detail($idbill, $item['id'], $item['soluong'], $item['price'], $item['thanhtien']);
+                    insert_bill_detail($iduser, $idbill, $item['id'], $item['img'], $item['name'], $item['soluong'], $item['price'], $item['thanhtien']);
                     }
-                    // Xóa giỏ hàng sau khi xác nhận đơn hàng
+                    clear_cart($iduser);
+                    
+                    $_SESSION['bill'] = [
+                        'id' => $idbill,
+                        'hoten' => $hoten,
+                        'email' => $email,
+                        'sdt' => $sdt,
+                        'diachi' => $diachi,
+                        'pttt' => $pttt,
+                        'trangthai' => $trangthai
+                    ];
+        
                     header('Location: index.php?act=billconfirm');
                     exit();
                 } else {
@@ -191,11 +203,20 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             include "trangsp/bill.php";
             break;
         
+        
+        
+        
+        
+        
 
-        case 'billconfirm':
-        include "trangsp/billconfirm.php";
+
+
+            case 'billconfirm':
+                
+           include "trangsp/billconfirm.php";
            
-            break;
+           
+                break;
 
             
 

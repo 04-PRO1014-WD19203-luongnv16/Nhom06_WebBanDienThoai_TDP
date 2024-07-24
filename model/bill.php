@@ -1,36 +1,19 @@
 <?php
 
 function insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total, $trangthai) {
-    $sql = "INSERT INTO bill (iduser, hoten, diachi, sdt, email, pttt, ngaydathang, total, trangthai) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO bill (iduser, hoten, diachi, sdt, email, pttt, ngaydathang, total, trangthai) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     return pdo_execute_return_lastInsertId($sql, $iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total, $trangthai);
 }
 
 
-function insert_bill_detail($idbill, $idpro, $soluong, $price, $thanhtien) {
-    $sql = "INSERT INTO bill_detail (idbill, idpro, soluong, price, thanhtien) VALUES (?, ?, ?, ?, ?)";
-    pdo_execute($sql, $idbill, $idpro, $soluong, $price, $thanhtien);
-}
-
-
-function load_all_bill_by_user($iduser) {
-    $sql = "SELECT * FROM bill WHERE iduser = ?";
-return pdo_query($sql, $iduser);
+function clear_cart($iduser) {
+    $sql = "DELETE FROM cart WHERE iduser = ? AND idbill = 0";
+    pdo_execute($sql, $iduser);
 }
 
 function load_bill_by_user($iduser) {
     $sql = "SELECT * FROM bill WHERE iduser = $iduser ORDER BY ngaydathang DESC";
     return pdo_query($sql);
-}
-
-function load_bill_details($idbill) {
-    $sql = "SELECT * FROM bill_detail WHERE idbill = ?";
-    return pdo_query($sql, $idbill);
-}
-
-function clear_cart($iduser) {
-    $sql = "DELETE FROM cart WHERE iduser = ? AND idbill = 0";
-    pdo_execute($sql, $iduser);
 }
 
 function load_bill_by_id($id) {
