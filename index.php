@@ -159,7 +159,45 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         }
         break;
 
-
+        case 'edit_taikhoan':
+            if (isset($_POST['capnhat']) && $_POST['capnhat']) {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $hoten = $_POST['hoten'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                $email = $_POST['email'];
+                $id = $_POST['id'];
+        
+                // Kiểm tra các điều kiện
+                if (empty($username) || empty($password) || empty($hoten) || empty($address) || empty($tel) || empty($email)) {
+                    $thongbao = "Vui lòng điền đầy đủ thông tin.";
+                } elseif (strlen($password) < 8) {
+                    $thongbao = "Mật khẩu phải ít nhất 8 ký tự.";
+                } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $thongbao = "Email không hợp lệ.";
+                } else {
+                    update_taikhoan($id, $username, $password, $email, $tel, $address, $hoten);
+                    
+                    // Cập nhật session sau khi thông tin người dùng được cập nhật thành công
+                    $_SESSION['user'] = [
+                        'id' => $id,
+                        'username' => $username,
+                        'password' => $password,
+                        'email' => $email,
+                        'tel' => $tel,
+                        'address' => $address,
+                        'hoten' => $hoten
+                    ];
+        
+                    header('Location: index.php?act=edit_taikhoan&success=1');
+                    exit();
+                }
+            }
+            include "view/user.php";
+            break;
+        
+        
         case 'bill':
             if (isset($_POST['xacnhan'])) {
                 $iduser = $_SESSION['user']['id'] ?? 0;
@@ -170,13 +208,10 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $pttt = $_POST['pttt'] ?? 1;
                 $ngaydathang = $_POST['ngaydathang'] ?? date('Y-m-d');
                 $total = $_POST['total'] ?? 0;
-        
                 $total = str_replace(['đ', ','], '', $total);
                 $total = floatval($total);
                 $trangthai = $_POST['trangthai'] ?? 0;
-        
                 $idbill = insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total, $trangthai);
-        
                 if ($idbill) {
                     $cartItems = load_cart_by_user($iduser);
                     foreach ($cartItems as $item) {
@@ -203,20 +238,9 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             include "trangsp/bill.php";
             break;
         
-        
-        
-        
-        
-        
-
-
-
             case 'billconfirm':
-                
-           include "trangsp/billconfirm.php";
-           
-           
-                break;
+            include "trangsp/billconfirm.php";
+            break;
 
             
 

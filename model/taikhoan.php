@@ -17,8 +17,8 @@ function checkemail($email){
     return pdo_query_one($sql);
 }
 
-function update_taikhoan($id, $username, $password, $email, $phone, $diachi,$hoten) {
-    $sql = "UPDATE taikhoan SET username = '$username', password = '$password', email = '$email', phone = '$phone', diachi = '$diachi', hoten = '$hoten' WHERE id = $id";
+function update_taikhoan($id, $username, $password, $email, $tel, $address,$hoten) {
+    $sql = "UPDATE taikhoan SET username = '$username', password = '$password', email = '$email', tel = '$tel', address = '$address', hoten = '$hoten' WHERE id = $id";
     return pdo_query_one($sql);
 }
 
