@@ -43,7 +43,7 @@
                     extract($_SESSION['user']);
                     ?>
                    <div class="nav-link">
-                  <span style="color: red;">Xin chào </span> <span style="color: red;"><?=$username?></span>
+                  <span style="color: red;">Xin chào </span> <a href="index.php?act=edit_taikhoan"><span style="color: red;"><?=$username?></span></a>
                </div>
 
                     <?php if ($role == 1){?>

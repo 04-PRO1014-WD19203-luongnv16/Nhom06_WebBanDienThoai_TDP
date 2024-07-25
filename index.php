@@ -8,6 +8,7 @@ include "view/header.php";
 include "model/taikhoan.php";
 include "model/bill.php";
 include "model/cart.php";
+include "model/bill_detail.php";
 
 $listdm = loadall_danhmuc();
 $spnew = loadAll_sanpham();
@@ -125,6 +126,26 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
     }
     break;
 
+    case 'updatecart':
+        if (isset($_POST['id']) && isset($_POST['action'])) {
+            $id = $_POST['id'];
+            $action = $_POST['action'];
+            $soluong = isset($_POST['soluong']) ? intval($_POST['soluong']) : 1;
+    
+            if ($action == 'increase') {
+                $soluong++;
+            } elseif ($action == 'decrease' && $soluong > 1) {
+                $soluong--;
+            }
+    
+            update_cart($id, $soluong);
+            header('Location: index.php?act=giohang');
+            exit();
+        }
+        break;
+
+        
+
 
     case 'giohang':
         if (isset($_SESSION['user'])) {
@@ -138,6 +159,45 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
         }
         break;
 
+        case 'edit_taikhoan':
+            if (isset($_POST['capnhat']) && $_POST['capnhat']) {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $hoten = $_POST['hoten'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                $email = $_POST['email'];
+                $id = $_POST['id'];
+        
+                // Kiểm tra các điều kiện
+                if (empty($username) || empty($password) || empty($hoten) || empty($address) || empty($tel) || empty($email)) {
+                    $thongbao = "Vui lòng điền đầy đủ thông tin.";
+                } elseif (strlen($password) < 8) {
+                    $thongbao = "Mật khẩu phải ít nhất 8 ký tự.";
+                } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $thongbao = "Email không hợp lệ.";
+                } else {
+                    update_taikhoan($id, $username, $password, $email, $tel, $address, $hoten);
+                    
+                    // Cập nhật session sau khi thông tin người dùng được cập nhật thành công
+                    $_SESSION['user'] = [
+                        'id' => $id,
+                        'username' => $username,
+                        'password' => $password,
+                        'email' => $email,
+                        'tel' => $tel,
+                        'address' => $address,
+                        'hoten' => $hoten
+                    ];
+        
+                    header('Location: index.php?act=edit_taikhoan&success=1');
+                    exit();
+                }
+            }
+            include "view/user.php";
+            break;
+        
+        
         case 'bill':
             if (isset($_POST['xacnhan'])) {
                 $iduser = $_SESSION['user']['id'] ?? 0;
@@ -148,34 +208,43 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                 $pttt = $_POST['pttt'] ?? 1;
                 $ngaydathang = $_POST['ngaydathang'] ?? date('Y-m-d');
                 $total = $_POST['total'] ?? 0;
-                
                 $total = str_replace(['đ', ','], '', $total);
                 $total = floatval($total);
                 $trangthai = $_POST['trangthai'] ?? 0;
-
-                // Lưu thông tin bill vào session
-                $_SESSION['bill'] = [
-                    'hoten' => $hoten,
-                    'diachi' => $diachi,
-                    'sdt' => $sdt,
-                    'email' => $email,
-                    'pttt' => $pttt,
-                    'ngaydathang' => $ngaydathang,
-                    'total' => $total,
-                    'trangthai' => $trangthai
-
-                ];
-                insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total,$trangthai);
-                 header('Location: index.php?act=billconfirm');
+                $idbill = insert_bill($iduser, $hoten, $diachi, $sdt, $email, $pttt, $ngaydathang, $total, $trangthai);
+                if ($idbill) {
+                    $cartItems = load_cart_by_user($iduser);
+                    foreach ($cartItems as $item) {
+                    insert_bill_detail($iduser, $idbill, $item['id'], $item['img'], $item['name'], $item['soluong'], $item['price'], $item['thanhtien']);
+                    }
+                    clear_cart($iduser);
+                    
+                    $_SESSION['bill'] = [
+                        'id' => $idbill,
+                        'hoten' => $hoten,
+                        'email' => $email,
+                        'sdt' => $sdt,
+                        'diachi' => $diachi,
+                        'pttt' => $pttt,
+                        'trangthai' => $trangthai
+                    ];
+        
+                    header('Location: index.php?act=billconfirm');
+                    exit();
+                } else {
+                    $thongbao = "Có lỗi xảy ra khi xử lý đơn hàng. Vui lòng thử lại.";
+                }
             }
             include "trangsp/bill.php";
             break;
-
-           
+        
             case 'billconfirm':
-                
-                include "trangsp/billconfirm.php"; 
-                break;
+            include "trangsp/billconfirm.php";
+            break;
+
+            
+
+            
 
         case 'thoat':
             session_unset();

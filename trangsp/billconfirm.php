@@ -1,14 +1,17 @@
 <?php
 
+
 if (!isset($_SESSION['user']) || !isset($_SESSION['bill'])) {
     header('Location: index.php');
     exit();
 }
 
 $iduser = $_SESSION['user']['id'];
-$cartItems = load_cart_by_user($iduser);
 $tt = $_SESSION['bill'];
 $orderID = strtoupper(uniqid());
+
+$lastBill = load_bill_by_user($iduser)[0] ?? [];
+$billDetails = load_bill_detail_by_id($lastBill['id'] ?? 0);
 
 $paymentMethods = [
     1 => 'Thanh toán khi nhận hàng',
@@ -25,7 +28,7 @@ $statusLabels = [
     3 => 'Đã giao hàng'
 ];
 
-$status = $statusLabels[$tt['trangthai']] ?? 'Không xác định';
+$status = $statusLabels[$lastBill['trangthai']] ?? 'Không xác định';
 ?>
 
 <!DOCTYPE html>
@@ -41,17 +44,18 @@ $status = $statusLabels[$tt['trangthai']] ?? 'Không xác định';
     <div class="container">
         <h2 style="color:black">Thanh Toán Thành Công</h2>
         <p style="color:black">Cảm ơn bạn đã mua hàng!</p>
-        <p style="color:black">Mã đơn hàng của bạn là: <strong><?= $orderID ?></strong></p>
+        <p style="color:black">Mã đơn hàng của bạn là: <strong><?= htmlspecialchars($lastBill['id']) ?></strong></p>
+        <p style="color:black">Ngày đặt hàng: <?= htmlspecialchars($lastBill['ngaydathang']) ?></p>
         <h3 style="color:black">Thông tin khách hàng:</h3>
-        <p style="color:black">Họ và tên: <?= $tt['hoten'] ?></p>
-        <p style="color:black">Email: <?= $tt['email'] ?></p>
-        <p style="color:black">Số điện thoại: <?= $tt['sdt'] ?></p>
-        <p style="color:black">Địa Chỉ: <?= $tt['diachi'] ?></p>
-        <p style="color:black">Trạng Thái: <?= $status ?></p>
-        <p style="color:black">Phương thức thanh toán: <?= $pttt ?></p>
+        <p style="color:black">Họ và tên: <?= htmlspecialchars($lastBill['hoten']) ?></p>
+        <p style="color:black">Email: <?= htmlspecialchars($lastBill['email']) ?></p>
+        <p style="color:black">Số điện thoại: <?= htmlspecialchars($lastBill['sdt']) ?></p>
+        <p style="color:black">Địa Chỉ: <?= htmlspecialchars($lastBill['diachi']) ?></p>
+        <p style="color:black">Trạng Thái: <?= htmlspecialchars($status) ?></p>
+        <p style="color:black">Phương thức thanh toán: <?= htmlspecialchars($pttt) ?></p>
 
         <h3 style="color:black">Chi tiết đơn hàng:</h3>
-        <table style="color:black">
+        <table style="color:black; width: 100%; border-collapse: collapse;">
             <tr>
                 <th>Hình ảnh</th>
                 <th>Tên sản phẩm</th>
@@ -61,24 +65,23 @@ $status = $statusLabels[$tt['trangthai']] ?? 'Không xác định';
             </tr>
             <?php
             $grandTotal = 0;
-            foreach ($cartItems as $item) {
-                $price = is_numeric($item['price']) ? $item['price'] : 0;
-                $soluong = is_numeric($item['soluong']) ? $item['soluong'] : 0;
-                $total = $price * $soluong;
-                $grandTotal += $total;
-
+            foreach ($billDetails as $detail) {
+                $price = is_numeric($detail['price']) ? $detail['price'] : 0;
+                $soluong = is_numeric($detail['soluong']) ? $detail['soluong'] : 0;
+                $thanhtien = $price * $soluong;
+                $grandTotal += $thanhtien;
                 echo "<tr>
-                    <td><img src='view/images/{$item['img']}' width='100' alt='{$item['name']}'></td>
-                    <td>{$item['name']}</td>
-                    <td>" . number_format($price) . " ₫</td>
-                    <td>{$soluong}</td>
-                    <td>" . number_format($total) . " ₫</td>
+                    <td><img src='view/images/" . htmlspecialchars($detail['img']) . "' width='100' alt='" . htmlspecialchars($detail['name']) . "'></td>
+                    <td>" . htmlspecialchars($detail['name']) . "</td>
+                    <td>" . number_format($price, 0, ',', '.') . " đ</td>
+                    <td>" . htmlspecialchars($soluong) . "</td>
+                    <td>" . number_format($thanhtien, 0, ',', '.') . " đ</td>
                 </tr>";
             }
             ?>
             <tr>
-                <td colspan="4" class="text-right"><strong>Tổng cộng:</strong></td>
-                <td><strong><?= number_format($grandTotal) ?> ₫</strong></td>
+                <td colspan="4" style="text-align: right;"><strong>Tổng cộng:</strong></td>
+                <td><strong><?= number_format($grandTotal, 0, ',', '.') ?> đ</strong></td>
             </tr>
         </table>
     </div>

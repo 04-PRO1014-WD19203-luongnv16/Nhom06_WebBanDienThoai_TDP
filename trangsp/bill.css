@@ -118,3 +118,54 @@ h2 {
     display: table;
     clear: both;
 }
+
+/**/
+.thongtin {
+    width: 45%;
+    margin-left: 500px;
+ }
+
+.thongtin form {
+    background: #f4f4f4;
+    padding: 1em;
+    border-radius: 8px;
+}
+
+.thongtin label {
+    display: block;
+    margin: 0.5em 0 0.2em;
+}
+
+.thongtin input[type="text"],
+.thongtin input[type="email"],
+.thongtin input[type="date"] {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.thongtin input[type="radio"] {
+    margin-right: 0.5em;
+}
+
+.thongtin button {
+    display: inline-block;
+    padding: 0.7em 1.5em;
+    font-size: 1em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.thongtin button:hover {
+    background-color: #0056b3;
+}
+.thongtin h2 {
+    text-align: center;
+}

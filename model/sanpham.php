@@ -24,13 +24,13 @@ function loadAll_sanpham($iddm = 0){
     return $sp;
   }
   
-  function update_sanpham($id,$name,$mota,$img,$price,$stock,$iddm){
-    if($img!=""){
-      $sql = "UPDATE sanpham SET name='$name',mota='$mota',img='$img',price='$price',stock='$stock',iddm='$iddm' WHERE id=".$id;
-    }else{
-      $sql = "UPDATE sanpham SET name='$name',mota='$mota',price='price',stock='$stock',iddm='$iddm' WHERE id=".$id;
+  function update_sanpham($id, $name, $mota, $img, $price, $stock, $iddm) {
+    if ($img != "") {
+        $sql = "UPDATE sanpham SET name='$name', mota='$mota', img='$img', price='$price', stock='$stock', iddm='$iddm' WHERE id=".$id;
+    } else {
+        $sql = "UPDATE sanpham SET name='$name', mota='$mota', price='$price', stock='$stock', iddm='$iddm' WHERE id=".$id;
     }
     pdo_execute($sql);
-  }
-  
+}
+
 ?> 
