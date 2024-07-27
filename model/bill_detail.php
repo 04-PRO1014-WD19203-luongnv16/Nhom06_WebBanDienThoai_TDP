@@ -11,4 +11,9 @@ function load_bill_detail_by_id($idbill) {
     return pdo_query($sql, $idbill);
 }
 
+function load_bill_details_by_id($id) {
+    $sql = "SELECT * FROM bill_detail WHERE idbill = $id";
+    return pdo_query($sql);
+}
+
 ?>
