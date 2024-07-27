@@ -7,6 +7,7 @@
   include '../model/pdo.php';
   include '../model/bill.php';
   include '../model/taikhoan.php';
+  include '../model/bill_detail.php';
 
   // controller
   if(isset($_GET['act'])){
@@ -119,7 +120,7 @@
         include './khachhang/list.php';
         break;
       case 'listdh':
-        $orders = load_all_orders(); 
+        $orders = load_all_orders();  
         include './donhang/list.php'; 
         break;
 
@@ -131,7 +132,7 @@
           include './taikhoan/list.php';
           break;
           
-          case 'updatedh':
+          case 'chitietdh':
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $suabill = loadOne_bill($_GET['id']); 
             }

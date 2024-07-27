@@ -71,7 +71,7 @@ function get_order_status_name($status_code) {
                                             <td>{$order['ngaydathang']}</td>
                                             <td>{$status_name}</td>
                                             <td>
-                                                <a href='index.php?act=updatedh&id={$order['id']}' class='sua'>
+                                                <a href='index.php?act=chitietdh&id={$order['id']}' class='sua'>
                                                     <i class='bi bi-pencil-square'></i>
                                                 </a>
                                             </td>

@@ -44,15 +44,15 @@ $status = $statusLabels[$lastBill['trangthai']] ?? 'Không xác định';
     <div class="container">
         <h2 style="color:black">Thanh Toán Thành Công</h2>
         <p style="color:black">Cảm ơn bạn đã mua hàng!</p>
-        <p style="color:black">Mã đơn hàng của bạn là: <strong><?= htmlspecialchars($lastBill['id']) ?></strong></p>
-        <p style="color:black">Ngày đặt hàng: <?= htmlspecialchars($lastBill['ngaydathang']) ?></p>
+        <p style="color:black">Mã đơn hàng của bạn là: <strong><?= ($lastBill['id']) ?></strong></p>
+        <p style="color:black">Ngày đặt hàng: <?= ($lastBill['ngaydathang']) ?></p>
         <h3 style="color:black">Thông tin khách hàng:</h3>
-        <p style="color:black">Họ và tên: <?= htmlspecialchars($lastBill['hoten']) ?></p>
-        <p style="color:black">Email: <?= htmlspecialchars($lastBill['email']) ?></p>
-        <p style="color:black">Số điện thoại: <?= htmlspecialchars($lastBill['sdt']) ?></p>
-        <p style="color:black">Địa Chỉ: <?= htmlspecialchars($lastBill['diachi']) ?></p>
-        <p style="color:black">Trạng Thái: <?= htmlspecialchars($status) ?></p>
-        <p style="color:black">Phương thức thanh toán: <?= htmlspecialchars($pttt) ?></p>
+        <p style="color:black">Họ và tên: <?= ($lastBill['hoten']) ?></p>
+        <p style="color:black">Email: <?= ($lastBill['email']) ?></p>
+        <p style="color:black">Số điện thoại: <?= ($lastBill['sdt']) ?></p>
+        <p style="color:black">Địa Chỉ: <?= ($lastBill['diachi']) ?></p>
+        <p style="color:black">Trạng Thái: <?= ($status) ?></p>
+        <p style="color:black">Phương thức thanh toán: <?= ($pttt) ?></p>
 
         <h3 style="color:black">Chi tiết đơn hàng:</h3>
         <table style="color:black; width: 100%; border-collapse: collapse;">
@@ -71,10 +71,10 @@ $status = $statusLabels[$lastBill['trangthai']] ?? 'Không xác định';
                 $thanhtien = $price * $soluong;
                 $grandTotal += $thanhtien;
                 echo "<tr>
-                    <td><img src='view/images/" . htmlspecialchars($detail['img']) . "' width='100' alt='" . htmlspecialchars($detail['name']) . "'></td>
-                    <td>" . htmlspecialchars($detail['name']) . "</td>
+                    <td><img src='view/images/" . ($detail['img']) . "' width='100' alt='" . ($detail['name']) . "'></td>
+                    <td>" . ($detail['name']) . "</td>
                     <td>" . number_format($price, 0, ',', '.') . " đ</td>
-                    <td>" . htmlspecialchars($soluong) . "</td>
+                    <td>" . ($soluong) . "</td>
                     <td>" . number_format($thanhtien, 0, ',', '.') . " đ</td>
                 </tr>";
             }
