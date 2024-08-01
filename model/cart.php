@@ -43,4 +43,6 @@ function update_cart_quantity($id, $soluong, $thanhtien) {
         'id' => $id
     ]);
 }
+
+
 ?>
