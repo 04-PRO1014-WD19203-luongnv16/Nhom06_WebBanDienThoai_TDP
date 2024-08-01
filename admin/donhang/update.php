@@ -73,12 +73,20 @@ function get_order_status_name($status_code) {
         <div class="mb-4">
           <form method="post" action="">
             <select name="trangthai" class="tinh_trang">
-              <option value="0" <?= $suabill['trangthai'] == 0 ? 'selected' : '' ?>>Đơn Hàng Mới</option>
-              <option value="1" <?= $suabill['trangthai'] == 1 ? 'selected' : '' ?>>Đang xử lý</option>
-              <option value="2" <?= $suabill['trangthai'] == 2 ? 'selected' : '' ?>>Đang giao hàng</option>
-              <option value="3" <?= $suabill['trangthai'] == 3 ? 'selected' : '' ?>>Đã giao hàng</option>
+              <?php
+              if ($suabill['trangthai'] == 0) {
+                  echo '<option value="1">Đang xử lý</option>';
+                  echo '<option value="2">Đang giao hàng</option>';
+                  echo '<option value="3">Đã giao hàng</option>';
+              } elseif ($suabill['trangthai'] == 1) {
+                  echo '<option value="2">Đang giao hàng</option>';
+                  echo '<option value="3">Đã giao hàng</option>';
+              } elseif ($suabill['trangthai'] == 2) {
+                  echo '<option value="3">Đã giao hàng</option>';
+              }
+              ?>
             </select>
-            <button type="submit" class="success">Xác nhận đơn hàng</button>
+            <button type="submit" class="success">Xác nhận</button>
           </form><br>
           <a href="index.php?act=listdh" class="danger">Trở về</a>
         </div>

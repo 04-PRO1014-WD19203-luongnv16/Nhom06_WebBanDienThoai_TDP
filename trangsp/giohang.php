@@ -7,13 +7,17 @@ if (!isset($_SESSION['user'])) {
 
 $gioHang = load_cart_by_user($_SESSION['user']['id']); 
 
-$tongTien = array_sum(array_column($gioHang, 'total'));
-$total = isset($tongTien) ? $tongTien : 0;
+$tongCong = 0; 
 
 function formatCurrency($amount) {
     return number_format($amount, 0, '.', '.') . " ₫";
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ hàng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="trangsp/sp.css"> 
@@ -34,9 +38,12 @@ function formatCurrency($amount) {
             <?php
             if ($gioHang) {
                 foreach ($gioHang as $sp) {
-                    $price = is_numeric($sp['price']) ? $sp['price'] : 0;
-                    $soluong = is_numeric($sp['soluong']) ? $sp['soluong'] : 0;
+                    $price = $sp['price'];
+                    $soluong = $sp['soluong'];
                     $total = $price * $soluong;
+
+                    $tongCong += $total; 
+
                     echo "<tr>
                         <td><img src='view/images/{$sp['img']}' width='100' alt='{$sp['name']}'></td>
                         <td>{$sp['name']}</td>
@@ -53,14 +60,15 @@ function formatCurrency($amount) {
                         <td><a href='index.php?act=removefromcart&id={$sp['id']}'>Xóa</a></td>
                     </tr>";
                 }
+
                 echo "<tr>
                     <td colspan='4'><strong>Tổng giỏ hàng:</strong></td>
-                    <td class='cart-total'>" . formatCurrency($total) . "</td>
+                    <td class='cart-total'>" . formatCurrency($tongCong) . "</td>
                     <td></td>
                 </tr>";
                 echo "<tr>
                     <td colspan='6' class='text-right'>
-                        <a href='index.php?act=bill&total=" . $total . "' class='button-color'>Xác nhận</a>
+                        <a href='index.php?act=bill&total=" . $tongCong . "' class='button-color'>Xác nhận</a>
                     </td>
                 </tr>";
             } else {
