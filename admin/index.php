@@ -134,7 +134,7 @@
           
           case 'chitietdh':
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $suabill = loadOne_bill($_GET['id']); 
+                $suabill = loadOne_bill($_GET['id']);
             }
         
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['trangthai'])) {
@@ -142,13 +142,10 @@
                 $new_status = $_POST['trangthai'];
                 if ($suabill) {
                     $current_status = $suabill['trangthai'];
-        
-                    if ($new_status > $current_status) {
+                    // Chỉ cho phép cập nhật đến trạng thái cao hơn hoặc chuyển sang trạng thái hủy đơn
+                    if ($new_status > $current_status || $new_status == 4) {
                         update_bill_status($id, $new_status);
-        
                         $_SESSION['success_message'] = "Cập nhật trạng thái đơn hàng thành công.";
-                        header("Location: index.php?act=listdh");
-                        exit;
                     } else {
                         $_SESSION['error_message'] = "Không thể cập nhật về trạng thái cũ hơn!";
                     }
@@ -157,10 +154,8 @@
                 }
             }
         
-            include './donhang/update.php'; 
+            include './donhang/update.php';
             break;
-        
-        
         
       default:
         include './component/home.php';
