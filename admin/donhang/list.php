@@ -14,7 +14,8 @@ function get_order_status_name($status_code) {
         0 => 'Đơn hàng mới',
         1 => 'Đang xử lý',
         2 => 'Đang giao hàng',
-        3 => 'Đã giao hàng'
+        3 => 'Đã giao hàng',
+        4 => 'Hủy đơn'
     ];
     return isset($status_labels[$status_code]) ? $status_labels[$status_code] : 'Không xác định';
 }

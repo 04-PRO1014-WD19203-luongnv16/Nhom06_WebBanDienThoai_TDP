@@ -9,13 +9,14 @@ function get_payment_method_name($pttt_code) {
 }
 
 function get_order_status_name($status_code) {
-    $status_labels = [
-        0 => 'Đơn hàng mới',
-        1 => 'Đang xử lý',
-        2 => 'Đang giao hàng',
-        3 => 'Đã giao hàng'
-    ];
-    return isset($status_labels[$status_code]) ? $status_labels[$status_code] : 'Không xác định';
+  $status_labels = [
+      0 => 'Đơn hàng mới',
+      1 => 'Đang xử lý',
+      2 => 'Đang giao hàng',
+      3 => 'Đã giao hàng',
+      4 => 'Hủy đơn'
+  ];
+  return isset($status_labels[$status_code]) ? $status_labels[$status_code] : 'Không xác định';
 }
 ?>
 
@@ -29,7 +30,7 @@ function get_order_status_name($status_code) {
     <!-- end breadcrumb -->
     <div class="card">
       <div class="card-body">
-        <h3>#1.Thông Tin Đơn Hàng</h3>
+        <h3>#1. Thông Tin Đơn Hàng</h3>
         <div class="product-table">
           <div class="table-responsive">
             <table class="table">
@@ -70,19 +71,42 @@ function get_order_status_name($status_code) {
             </table>
           </div>
         </div>
+       
         <div class="mb-4">
           <form method="post" action="">
             <select name="trangthai" class="tinh_trang">
               <?php
-              if ($suabill['trangthai'] == 0) {
+              $current_status = $suabill['trangthai'];
+              if ($current_status == 0) {
+                  echo '<option value="0" selected>Đơn hàng mới</option>';
                   echo '<option value="1">Đang xử lý</option>';
                   echo '<option value="2">Đang giao hàng</option>';
                   echo '<option value="3">Đã giao hàng</option>';
-              } elseif ($suabill['trangthai'] == 1) {
+                  echo '<option value="4">Hủy đơn</option>'; 
+              } elseif ($current_status == 1) {
+                  echo '<option value="0" disabled>Đơn hàng mới</option>';
+                  echo '<option value="1" selected>Đang xử lý</option>';
                   echo '<option value="2">Đang giao hàng</option>';
                   echo '<option value="3">Đã giao hàng</option>';
-              } elseif ($suabill['trangthai'] == 2) {
+                  echo '<option value="4">Hủy đơn</option>'; 
+              } elseif ($current_status == 2) {
+                  echo '<option value="0" disabled>Đơn hàng mới</option>';
+                  echo '<option value="1" disabled>Đang xử lý</option>';
+                  echo '<option value="2" selected>Đang giao hàng</option>';
                   echo '<option value="3">Đã giao hàng</option>';
+                  echo '<option value="4">Hủy đơn</option>'; 
+              } elseif ($current_status == 3) {
+                  echo '<option value="0" disabled>Đơn hàng mới</option>';
+                  echo '<option value="1" disabled>Đang xử lý</option>';
+                  echo '<option value="2" disabled>Đang giao hàng</option>';
+                  echo '<option value="3" selected>Đã giao hàng</option>';
+                  echo '<option value="4">Hủy đơn</option>'; 
+              } elseif ($current_status == 4) {
+                  echo '<option value="0" disabled>Đơn hàng mới</option>';
+                  echo '<option value="1" disabled>Đang xử lý</option>';
+                  echo '<option value="2" disabled>Đang giao hàng</option>';
+                  echo '<option value="3" disabled>Đã giao hàng</option>';
+                  echo '<option value="4" selected>Hủy đơn</option>'; 
               }
               ?>
             </select>
@@ -90,6 +114,7 @@ function get_order_status_name($status_code) {
           </form><br>
           <a href="index.php?act=listdh" class="danger">Trở về</a>
         </div>
+
         <div class="product-table mt-4">
           <h3>#2. Thông tin sản phẩm</h3>
           <div class="table-responsive">
