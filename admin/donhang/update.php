@@ -12,9 +12,12 @@ function get_order_status_name($status_code) {
   $status_labels = [
       0 => 'Đơn hàng mới',
       1 => 'Đang xử lý',
-      2 => 'Đang giao hàng',
-      3 => 'Đã giao hàng',
-      4 => 'Hủy đơn'
+      2 => 'Xác nhận đơn hàng',
+      3 => 'Đang giao hàng',
+      4 => 'Đã giao hàng',
+      5 => 'Giao hàng thất bại',
+      6 => 'Hủy đơn'
+
   ];
   return isset($status_labels[$status_code]) ? $status_labels[$status_code] : 'Không xác định';
 }
@@ -73,47 +76,74 @@ function get_order_status_name($status_code) {
         </div>
        
         <div class="mb-4">
-          <form method="post" action="">
-            <select name="trangthai" class="tinh_trang">
-              <?php
-              $current_status = $suabill['trangthai'];
-              if ($current_status == 0) {
-                  echo '<option value="0" selected>Đơn hàng mới</option>';
-                  echo '<option value="1">Đang xử lý</option>';
-                  echo '<option value="2">Đang giao hàng</option>';
-                  echo '<option value="3">Đã giao hàng</option>';
-                  echo '<option value="4">Hủy đơn</option>'; 
-              } elseif ($current_status == 1) {
-                  echo '<option value="0" disabled>Đơn hàng mới</option>';
-                  echo '<option value="1" selected>Đang xử lý</option>';
-                  echo '<option value="2">Đang giao hàng</option>';
-                  echo '<option value="3">Đã giao hàng</option>';
-                  echo '<option value="4">Hủy đơn</option>'; 
-              } elseif ($current_status == 2) {
-                  echo '<option value="0" disabled>Đơn hàng mới</option>';
-                  echo '<option value="1" disabled>Đang xử lý</option>';
-                  echo '<option value="2" selected>Đang giao hàng</option>';
-                  echo '<option value="3">Đã giao hàng</option>';
-                  echo '<option value="4">Hủy đơn</option>'; 
-              } elseif ($current_status == 3) {
-                  echo '<option value="0" disabled>Đơn hàng mới</option>';
-                  echo '<option value="1" disabled>Đang xử lý</option>';
-                  echo '<option value="2" disabled>Đang giao hàng</option>';
-                  echo '<option value="3" selected>Đã giao hàng</option>';
-                  echo '<option value="4">Hủy đơn</option>'; 
-              } elseif ($current_status == 4) {
-                  echo '<option value="0" disabled>Đơn hàng mới</option>';
-                  echo '<option value="1" disabled>Đang xử lý</option>';
-                  echo '<option value="2" disabled>Đang giao hàng</option>';
-                  echo '<option value="3" disabled>Đã giao hàng</option>';
-                  echo '<option value="4" selected>Hủy đơn</option>'; 
-              }
-              ?>
-            </select>
-            <button type="submit" class="success">Xác nhận</button>
-          </form><br>
-          <a href="index.php?act=listdh" class="danger">Trở về</a>
-        </div>
+  <form method="post" action="">
+    <select name="trangthai" class="tinh_trang">
+      <?php
+      $current_status = $suabill['trangthai'];
+      if ($current_status == 0) {
+          echo '<option value="0" selected>Đơn hàng mới</option>';
+          echo '<option value="1">Đang xử lý</option>';
+          echo '<option value="2" disabled>Xác nhận đơn hàng</option>';
+          echo '<option value="3" disabled>Đang giao hàng</option>';
+          echo '<option value="4" disabled>Đã giao hàng</option>';
+          echo '<option value="5" disabled>Giao hàng thất bại</option>';
+          echo '<option value="6" >Hủy đơn</option>'; 
+      } elseif ($current_status == 1) {
+          echo '<option value="0" disabled>Đơn hàng mới</option>';
+          echo '<option value="1" selected>Đang xử lý</option>';
+          echo '<option value="2" >Xác nhận đơn hàng</option>';
+          echo '<option value="3"  disabled>Đang giao hàng</option>';
+          echo '<option value="4" disabled>Đã giao hàng</option>';
+          echo '<option value="5" disabled>Giao hàng thất bại</option>';
+          echo '<option value="6" disabled>Hủy đơn</option>'; 
+      } elseif ($current_status == 2) {
+          echo '<option value="0" disabled>Đơn hàng mới</option>';
+          echo '<option value="1" disabled>Đang xử lý</option>';
+          echo '<option value="2" selected>Xác nhận đơn hàng</option>';
+          echo '<option value="3" >Đang giao hàng</option>';
+          echo '<option value="4" >Đã giao hàng</option>';
+          echo '<option value="5" >Giao hàng thất bại</option>';
+          echo '<option value="6" disabled>Hủy đơn</option>'; 
+      } elseif ($current_status == 3) {
+          echo '<option value="0" disabled>Đơn hàng mới</option>';
+          echo '<option value="1" disabled>Đang xử lý</option>';
+          echo '<option value="2" disabled>Xác nhận đơn hàng</option>';
+          echo '<option value="3" selected>Đang giao hàng</option>';
+          echo '<option value="4" >Đã giao hàng</option>';
+          echo '<option value="5" >Giao hàng thất bại</option>';
+          echo '<option value="6" disabled>Hủy đơn</option>'; 
+      } elseif ($current_status == 4) {
+          echo '<option value="0" disabled>Đơn hàng mới</option>';
+          echo '<option value="1" disabled>Đang xử lý</option>';
+          echo '<option value="2" disabled>Xác nhận đơn hàng</option>';
+          echo '<option value="3" disabled>Đang giao hàng</option>';
+          echo '<option value="4" selected>Đã giao hàng</option>';
+          echo '<option value="5" disabled>Giao hàng thất bại</option>';
+          echo '<option value="6" disabled>Hủy đơn</option>'; 
+      } elseif ($current_status == 5) {
+          echo '<option value="0" disabled>Đơn hàng mới</option>';
+          echo '<option value="1" disabled>Đang xử lý</option>';
+          echo '<option value="2" disabled>Xác nhận đơn hàng</option>';
+          echo '<option value="3" disabled>Đang giao hàng</option>';
+          echo '<option value="4" disabled>Đã giao hàng</option>';
+          echo '<option value="5" selected>Giao hàng thất bại</option>';
+          echo '<option value="6" disabled>Hủy đơn</option>'; 
+      } elseif ($current_status == 6) {
+          echo '<option value="0" disabled>Đơn hàng mới</option>';
+          echo '<option value="1" disabled>Đang xử lý</option>';
+          echo '<option value="2" disabled>Xác nhận đơn hàng</option>';
+          echo '<option value="3" disabled>Đang giao hàng</option>';
+          echo '<option value="4" disabled>Đã giao hàng</option>';
+          echo '<option value="5" disabled>Giao hàng thất bại</option>';
+          echo '<option value="6" selected>Hủy đơn</option>'; 
+      }
+      ?>
+    </select>
+    <button type="submit" class="success">Xác nhận</button>
+  </form><br>
+  <a href="index.php?act=listdh" class="danger">Trở về</a>
+</div>
+
 
         <div class="product-table mt-4">
           <h3>#2. Thông tin sản phẩm</h3>

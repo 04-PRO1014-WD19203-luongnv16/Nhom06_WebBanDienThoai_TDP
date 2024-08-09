@@ -37,6 +37,8 @@
                     </div>
                     <hr>
                     <span style="color:#0066CC"><?= number_format($onesp['price'], 0, ',', '.') ?>đ</span>
+                    <h5 style="color: black"><?= $onesp['mota'] ?></h5>
+
                     <br>
                     <br>
                     <form action="index.php?act=addtocart" method="post">
