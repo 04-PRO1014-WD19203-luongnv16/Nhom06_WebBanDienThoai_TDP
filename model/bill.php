@@ -38,6 +38,12 @@ function loadOne_bill($id) {
     return $suabill;
 }
 
+function update_order_status($order_id, $status) {
+    $sql = "UPDATE bill SET trangthai = ? WHERE id = ?";
+    return pdo_execute($sql, $status, $order_id); 
+}
+
+
 
 
 ?>

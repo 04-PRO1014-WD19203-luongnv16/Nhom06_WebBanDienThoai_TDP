@@ -1,5 +1,4 @@
 <?php
-// Hàm lấy tên phương thức thanh toán
 function get_payment_method_name($pttt_code) {
     $payment_methods = [
         1 => 'Chuyển khoản',
@@ -13,12 +12,15 @@ function get_order_status_name($status_code) {
     $status_labels = [
         0 => 'Đơn hàng mới',
         1 => 'Đang xử lý',
-        2 => 'Đang giao hàng',
-        3 => 'Đã giao hàng',
-        4 => 'Hủy đơn'
+        2 => 'Xác nhận đơn hàng',
+        3 => 'Đang giao hàng',
+        4 => 'Đã giao hàng',
+        5 => 'Giao hàng thất bại',
+        6 => 'Hủy đơn'
+  
     ];
     return isset($status_labels[$status_code]) ? $status_labels[$status_code] : 'Không xác định';
-}
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

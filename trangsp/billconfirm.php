@@ -1,6 +1,5 @@
 <?php
 
-
 if (!isset($_SESSION['user']) || !isset($_SESSION['bill'])) {
     header('Location: index.php');
     exit();
@@ -24,11 +23,21 @@ $pttt = $paymentMethods[$tt['pttt']] ?? 'Không xác định';
 $statusLabels = [
     0 => 'Đơn hàng mới',
     1 => 'Đang xử lý',
-    2 => 'Đang giao hàng',
-    3 => 'Đã giao hàng'
+    2 => 'Xác nhận đơn hàng',
+    3 => 'Đang giao hàng',
+    4 => 'Đã giao hàng',
+    5 => 'Giao hàng thất bại',
+    6 => 'Hủy đơn'
 ];
 
 $status = $statusLabels[$lastBill['trangthai']] ?? 'Không xác định';
+
+if (isset($_POST['cancel_order'])) {
+    $order_id = $_POST['order_id']; 
+
+    $result = update_order_status($order_id, 6); 
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +48,11 @@ $status = $statusLabels[$lastBill['trangthai']] ?? 'Không xác định';
     <title>Xác nhận đơn hàng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="trangsp/sp.css">   
+    <script>
+      function confirmCancelOrder() {
+        return confirm('Bạn có chắc chắn muốn hủy đơn hàng không?');
+      }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -84,6 +98,13 @@ $status = $statusLabels[$lastBill['trangthai']] ?? 'Không xác định';
                 <td><strong><?= number_format($grandTotal, 0, ',', '.') ?> đ</strong></td>
             </tr>
         </table>
+
+        <?php if ($lastBill['trangthai'] == 0 || $lastBill['trangthai'] == 1): ?>
+        <form method="post" action="" onsubmit="return confirmCancelOrder();" class = "huydon">
+            <input type="hidden" name="order_id" value="<?= $lastBill['id'] ?>">
+            <button type="submit" name="cancel_order" class="danger">Hủy đơn hàng</button>
+        </form>
+        <?php endif; ?>
     </div>
 </body>
 </html>

@@ -242,7 +242,23 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             include "trangsp/billconfirm.php";
             break;
 
-            
+            case 'cancel_order': 
+          if (isset($_GET['act']) && $_GET['act'] == 'cancel_order') {
+    if (isset($_GET['order_id'])) {
+        $order_id = intval($_GET['order_id']);
+        if (cancel_order($order_id)) {
+            echo "Đơn hàng đã được hủy thành công.";
+        } else {
+            echo "Có lỗi xảy ra trong quá trình hủy đơn hàng.";
+        }
+        } else {
+        echo "ID đơn hàng không hợp lệ.";
+      }
+        }
+
+                header('Location: index.php?act=billconfirm');
+                exit();
+                break;
 
             
 
